@@ -66,12 +66,14 @@
 
     function draw(startDate, endDate, regions, districts, metrics){
 
+      /* Reset chart */
       chart.dispose()
 
       /* regionsData is the array containing all the data */
-      let = dataset = JSON.parse(JSON.stringify(regionsData)).sort((a, b)=>{ return Date.parse(a.data) > Date.parse(b.data) }),
+      let = dataset = JSON.parse(JSON.stringify(regionsData)).sort(function(a, b){ return Date.parse(a.data) > Date.parse(b.data) }),
             start   = Date.parse(startDate),
             end     = Date.parse(endDate);
+      
       /* Metriche uguali devono avere tipi di series uguali! */
       /* Regioni uguali devono avere colori uguali! */
       
@@ -102,9 +104,19 @@
       }
       
       console.log("dataset length", dataset.length)
-
+      
+      /* Create new chart */
 
       chart = am4core.create('dynamic', am4charts.XYChart)
+      chart.colors.list = [
+        am4core.color("#845EC2"),
+        am4core.color("#D65DB1"),
+        am4core.color("#FF6F91"),
+        am4core.color("#FF9671"),
+        am4core.color("#FFC75F"),
+        am4core.color("#F9F871")
+      ];
+
       let timeAxis = chart.xAxes.push(new am4charts.DateAxis())
       timeAxis.title.text = "Data"
       let valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
@@ -133,14 +145,12 @@
               lineSeries.strokeWidth = 2
               lineSeries.dataFields.valueY = metric
               lineSeries.dataFields.dateX = 'data'
-              lineSeries.stroke = am4core.color('#ff0000')
               lineSeries.dataFields.valueY = metric
               lineSeries.dataFields.dateX = 'data'
               let bullet = lineSeries.bullets.push(new am4charts.Bullet());
               let circle = bullet.createChild(am4core.Circle);
               circle.width = 8;
               circle.height = 8;
-              circle.fill = am4core.color('#ff0000')
               circle.tooltipText = `${metric} in ${region}: {${metric}}`;
               lineSeries.data = dataset.filter(function(d){
                 return d.codice_regione === region
