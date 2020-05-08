@@ -28,7 +28,7 @@
 
     <div class="row">
       <div class="col-12">
-        <div class="chart">
+        <div id="chartdiv">
           
         </div>
       </div>
@@ -41,34 +41,23 @@
 
 
   <!-- CHART LIB -->
-  <script src="https://www.amcharts.com/lib/4/core.js"></script>
-  <script src="https://www.amcharts.com/lib/4/charts.js"></script>
-  <script src="https://www.amcharts.com/lib/4/themes/material.js"></script>
+  <script src="//www.amcharts.com/lib/4/core.js"></script>
+  <script src="//www.amcharts.com/lib/4/charts.js"></script>
+  <script src="//www.amcharts.com/lib/4/themes/material.js"></script>
+  <script src="//www.amcharts.com/lib/4/lang/it_IT.js"></script>
+
+  <!-- TEMP COMMON OPS (init widgets, load test json, etc) -->
+  <script type="text/javascript" src="../js/charts_common.js"></script>
+
   <script type="text/javascript">
-      /* Initialize custom select elements */
-      let choices = document.querySelectorAll('.js-choices'),
-          instances = [];
+    //Chart library test with actual data
+    /* regionsData is the array containing all the data */
 
-      choices.forEach(function(el){
-        let instance = new Choices(el, {
-          removeItemButton: true
-        })
-        instances.push(instance);
-        
-        instances[instances.length - 1].passedElement.element.addEventListener('change', function(event) {
-            console.log(event.detail.value);
-          },
-          false
-        );
-      })
-
-      /* Form Event Handlers */
-      const form = document.querySelector('form');
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
-        console.log('Ajax Call...')        
-        return false;
-      })
+    function onCSVLoad(){
+      console.log("DATA FIELDS: ")
+      console.log(Object.keys(regionsData[0]))
+    }
+    
   </script>
 </body>
 </html>
