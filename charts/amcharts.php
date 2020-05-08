@@ -11,8 +11,9 @@
 
   <!-- custom style -->
   <style type="text/css">
-    label{
-      flex-basis: 50%;
+    .chart{
+      background: #eee;
+      min-height: 400px; 
     }
   </style>
 </head>
@@ -26,8 +27,10 @@
     </div>
 
     <div class="row">
-      <div class="col-md-6 offset-md-3">
-
+      <div class="col-12">
+        <div class="chart">
+          
+        </div>
       </div>
     </div>
   </div>
