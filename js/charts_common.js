@@ -2,7 +2,6 @@
 let regionsData;
 
 /* TEMP: open json file to get test data */
-
 fetch('../regions.json')
 .then(function(response){
   return response.json()
