@@ -3,11 +3,8 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AMCharts test</title>
-  <!-- bootstrap CDN -->
-  
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="node_modules/choices.js/public/assets/styles/choices.min.css" />
-
 
   <!-- custom style -->
   <style type="text/css">
