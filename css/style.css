@@ -1,0 +1,307 @@
+body{
+	background-color: #F6F7EF;
+}
+
+/*--------------------------------------------------------------------------------------------------------*/
+
+/*NAVBAR*/
+
+nav.navbar.navbar-expand-sm.navbar-light {
+    background-color: white;
+}
+
+#NavbarShowcase{
+	margin-right:137px;
+	color:#667790;
+}
+
+#NavbarHome{
+	margin-right:26px;
+	color:#667790;
+}
+
+/*--------------------------------------------------------------------------------------------------------*/
+
+#PrimoHr{
+	border: 2px solid #C2CDDD;
+    opacity: 50%;
+    margin:auto;
+}
+
+/*--------------------------------------------------------------------------------------------------------*/
+
+/*CONTAINER TITLE*/
+
+#ContainerTitle {
+    min-height: 360px;
+    background-color: white;
+    overflow: auto;
+}
+
+#Titolo{
+    font-weight: bold;
+    font-size: 40px;
+    margin-left: 8%;
+    margin-right: 8%;
+    margin-top: 4.5%;
+    color:#0E141A;
+
+}
+
+#Sottotitolo{
+    font-size: 18px;
+    margin-top: 15px;
+    margin-left: 8%;
+    margin-right: 8%;
+    padding-bottom: 5%;
+    color:#0E141A;
+}
+
+/*--------------------------------------------------------------------------------------------------------*/
+
+/*CONTAINER REGIONS/DISTRICTS*/
+
+#RegionsDistricts{
+	margin-left: 8%;
+	margin-right: 8%;
+	font-weight: bold;
+	font-size: 27px;
+	margin-top: 2.5%;
+	color:#0E141A;
+}
+
+#DescrizioneRegionsDistrictsText{
+	margin-left: 8%;
+	margin-right: 8%;
+	font-weight: bold;
+	font-size: 21px;
+	margin-top: 2%;
+	color:#0E141A;
+}
+
+#DescrizioneRegionsDistricts{
+	margin-left: 8%;
+	margin-right: 8%;
+	font-size: 18px;
+	color:#0E141A;
+}
+
+#ParametriRegionsDistrictsText{
+	margin-left: 8%;
+	margin-right: 8%;
+	font-weight: bold;
+	font-size: 21px;
+	color:#0E141A;
+}
+
+#ParametriRegionsDistricts{
+	margin-left: 8%;
+	margin-right: 8%;
+	font-size: 18px;
+	color:#0E141A;
+}
+
+#EsempioRegionsDistrictsText{
+	margin-left: 8%;
+	margin-right: 8%;
+	font-weight: bold;
+	font-size: 21px;
+	color:#0E141A;
+}
+
+/*--------------------------------------------------------------------------------------------------------*/
+
+/* ButtonCopy*/
+
+#button{
+	background-color:#0E141A;
+	color:white;
+	display: flex;
+	min-height: 21px;
+	min-width:90px;
+	border:0px;
+	margin-left: auto;
+}
+
+#ImgButton{
+    width: 20px;
+    height: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 2px;
+}
+
+#TestoButton{
+	margin-top: auto;
+    margin-bottom: auto;
+    font-size: 14px;
+}
+
+#LinkJson{
+	min-height:685px;
+	background-color: white;
+	width: 84%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.5%;
+}
+
+#ContainerLink{
+	width:100%;
+	background-color: #0E141A;
+	min-height: 100px;
+}
+
+#ContainerLinkFriendlyURLSs{
+	width:100%;
+	background-color: #0E141A;
+	min-height: 100px;
+	width: 84%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0.5%;
+}
+
+#LinkRegions{	
+	color: #1AD5CE;
+	padding-left: 6px;	
+	padding-bottom: 1.5%;
+    padding-top: 1.5%;
+    font-size: 14px;
+    font-family: Courier, Verdana, Sans-serif;
+    overflow: auto;
+    display: flex;
+}
+
+#LinkDistricts{	
+	color: #1AD5CE;
+	padding-left: 6px;	
+	padding-bottom: 1.5%;
+    padding-top: 1.5%;
+    font-size: 14px;
+    font-family: Courier, Verdana, Sans-serif;
+    overflow: auto;
+    display: flex;
+}
+
+#LinkFriendlyURLSsName{	
+	color: #1AD5CE;
+	padding-left: 6px;	
+	padding-bottom: 1.5%;
+    padding-top: 1.5%;
+    font-size: 14px;
+    font-family: Courier, Verdana, Sans-serif;
+    overflow: auto;
+    display: flex;
+}
+
+#LinkFriendlyURLSsName1{	
+	color: #1AD5CE;
+	padding-left: 6px;	
+	padding-bottom: 2.5%;
+    font-size: 14px;
+    font-family: Courier, Verdana, Sans-serif;
+    overflow: auto;
+    display: flex;
+}
+
+#Json{
+	font-size: 16px;
+	font-family: Courier New, Verdana, Sans-serif;
+	color: #0E141A;
+	padding-left: 6px;
+	overflow: auto;
+	padding-top:3%;
+	padding-bottom:3%;
+}
+
+a{
+	color: #1AD5CE;
+    font-size: 14px;
+    font-family: Courier, Verdana, Sans-serif;
+}
+a:hover{
+    color: #1AD5CE;
+    font-size: 14px;
+    font-family: Courier, Verdana, Sans-serif; 
+ }
+
+#LinkRegionsLINK{
+	padding: 0px;
+	padding-left: 5px;
+}
+
+#LinkDistrictsLINK{
+	padding: 0px;
+	padding-left: 5px;
+}
+
+#LinkFriendlyURLSsNameLINK{
+	padding: 0px;
+	padding-left: 5px;
+}
+
+#LinkFriendlyURLSsNameLINK1{
+	padding: 0px;
+	padding-left: 5px;
+}
+
+/*--------------------------------------------------------------------------------------------------------*/
+
+#SecondoHr{
+	border: 2px solid #C2CDDD;
+    opacity: 50%;
+    margin:auto;
+    margin-top: 23%;
+}
+
+/*--------------------------------------------------------------------------------------------------------*/
+
+/*CONTAINER CREDITS*/
+
+#Credits{
+	min-height: 400px;
+	background-color: white;
+}
+
+#TextMenu{
+	font-size: 21px;
+	font-weight: bold;
+}
+
+#VociMenuCredits{
+	font-size: 16px;
+	padding: 0px;
+	color:#0E141A;
+}
+
+#CreditsText{
+	font-size:21px;
+	color:#0E141A;
+	font-weight: bold;
+}
+
+#CreditsTitolo{
+	font-size: 16px;
+	color:#0E141A;
+	font-weight: bold;
+}
+
+#CreditsSottotitolo{
+	font-size: 16px;
+	color: #0E141A;
+}
+
+#MenuCredits{
+	padding-left: 8%;
+    padding-top: 5%;
+}
+
+#CreditsName{
+	padding-right: 25%;
+    padding-top: 5%;
+    padding-left: 8%;
+}
+
+
+

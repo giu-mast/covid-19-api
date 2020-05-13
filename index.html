@@ -1,9 +1,266 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>PROVA</title>
-</head>
-<body>
-	<h1>PAGINA DI PROVA CIAO CIAO</h1>
-</body>
+<!doctype html> 
+<html lang="it"> 
+<head> 
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<link rel="stylesheet" href="css/bootsrap css/bootstrap.min.css">
+		<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+	<link rel="shortcut icon" href="img/icona.ico" />
+	<title>API COVID-19</title> 
+
+	<script type="text/javascript">
+		function CopyToClipboard(containerid) {
+		  if (window.getSelection) {
+		    var range = document.createRange();
+		    range.selectNode(document.getElementById(containerid));
+		    window.getSelection().addRange(range);
+		    document.execCommand("copy");
+		    window.getSelection().removeAllRanges(); 
+		    console.log("Copy!!")
+		  }
+		}			
+	</script>
+</head> 
+
+
+
+
+
+<body>  
+
+<nav class="navbar navbar-expand-sm navbar-light">
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+	    <div class="navbar-nav">
+	      <a class="nav-item nav-link" id="NavbarHome" href="#">Home</a>
+	      <a class="nav-item nav-link" id="NavbarShowcase" href="#">Showcase</a>
+	    </div>
+	</div>
+</nav>
+
+
+
+
+
+
+<hr/ id="PrimoHr">
+
+
+
+
+
+
+<div class="container-fluid" id="ContainerTitle">
+	<div class="row">
+		<div class="col-sm-6" id="Titolo">Visualizzazione dei dati COVID-19</div>
+	</div>
+
+	<div class="row ">
+		<div class="col-sm-7" id="Sottotitolo">COVID-JSON-19 è una API JSON gratuita che mette a disposizione i dati del contagio da Sars-COVID-19 in Italia. In questo sito potrete visualizzare anche grafici interattivi sul contagio da COVID-19 su tutto il territorio italiano. Potrete trovare vari indicatori per i parametri visualizzatili e le date relative ai dati.</div>
+	</div>
+</div>
+
+
+
+
+
+
+<div class="container-fluid" id="ContainerRegions">
+	<div class="row">
+		<div class="col-sm-2" id="RegionsDistricts">Regions</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-2" id="DescrizioneRegionsDistrictsText" class="Text">Descrizione</div>
+		<div class="col-sm-7" id="DescrizioneRegionsDistricts">L’api restituisce tutti i dati disponibili per regione dal 24/02/2020 alla data odierna.</div>
+		<div class="col-sm-2" id="ParametriRegionsDistrictsText" class="Text">Parametri</div>
+		<div class="col-sm-7" id="ParametriRegionsDistricts">
+			    start_date: restituisce i dati a partire dalla data specificata (formato YYYY-MM-DD)</br>
+				end_date: restituisce i dati fino alla data specificata (formato YYYY-MM-DD)</br>
+				region_code: codice ISTAT della regione</br>
+				region_name: denominazione della regione (n.b. ha precedenza su region_code)</div>
+		<div class="col-sm-4" id="EsempioRegionsDistrictsText">Esempio di utilizzo</div>
+	</div>
+
+	<div class="row-1" id="LinkJson">
+
+		<div id="ContainerLink">
+			<button id="button" onclick="CopyToClipboard('LinkRegionsLINK')">    
+		    	<div id="TestoButton">Copy code</div>
+		    	<img id="ImgButton" src="img/logoCopy.png">
+			</button>
+
+
+		 	<div class="col" id="LinkRegions">GET <a class="nav-link" target="_blank" href="http://covid-json.dev/api/regions?start_date=2020-04-04&end_date=2020-04-04&region_code=16" id="LinkRegionsLINK"> http://covid-json.dev/api/regions?start_date=2020-04-04&end_date=2020-04-04&region_code=16 </a></div>
+
+		</div>
+ 		<div class="col" id="Json">
+			[ </br>
+				&ensp;&ensp; { </br>
+				    &emsp;&emsp; “date”: “2020-04-04”, </br>
+				    &emsp;&emsp; “Nation”: “ITA”, </br>
+				    &emsp;&emsp; “region_code”: 16, </br>
+				    &emsp;&emsp; “region_name”: “Puglia”, </br>
+				    &emsp;&emsp; “hospitalized_with_symptoms”: 590, </br>
+				    &emsp;&emsp; “intensive_care”: 60, </br>
+				    &emsp;&emsp; “total_hospitalized”: 650, </br>
+				    &emsp;&emsp; “home_isolation”: 2136, </br>
+				    &emsp;&emsp; “total_positives”: 120, </br>
+				    &emsp;&emsp; “total_variation_positives”: 92, </br>
+				    &emsp;&emsp; “new_positives”: 120, </br>
+				    &emsp;&emsp; “released_cured”: 427, </br>
+				    &emsp;&emsp; “total_deaths”: 316, </br>
+				    &emsp;&emsp; “total_cases”: 41580, </br>
+				    &emsp;&emsp; “notes_en”: “”, </br>
+				    &emsp;&emsp; “notes_it”: “” </br>
+				&ensp;&ensp; } </br>
+			]
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+<div class="container-fluid" id="ContainerDistricts">
+	<div class="row">
+		<div class="col-sm-2" id="RegionsDistricts">Districts</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-2" id="DescrizioneRegionsDistrictsText">Descrizione</div>
+		<div class="col-sm-7" id="DescrizioneRegionsDistricts">L’api restituisce tutti i dati disponibili per provincia dal 24/02/2020 alla data odierna.</div>
+		<div class="col-sm-2" id="ParametriRegionsDistrictsText">Parametri</div>
+		<div class="col-sm-7" id="ParametriRegionsDistricts">
+			    start_date: restituisce i dati a partire dalla data specificata (formato YYYY-MM-DD) </br>
+				end_date: restituisce i dati fino alla data specificata (formato YYYY-MM-DD) </br>
+				district_code: codice ISTAT della provincia </br>
+				district_name: sigla della provincia (n.b. ha precedenza su district_code)</div>
+		<div class="col-sm-4" id="EsempioRegionsDistrictsText">Esempio di utilizzo</div>
+	</div>
+
+	<div class="row-1" id="LinkJson">
+
+		<div id="ContainerLink">
+			<button id="button" onclick="CopyToClipboard('LinkDistrictsLINK')">    
+		    	<div id="TestoButton">Copy code</div>
+		    	<img id="ImgButton" src="img/logoCopy.png">
+			</button>
+
+
+		 	<div class="col" id="LinkDistricts">GET <a class="nav-link" target="_blank" href="http://covid-json.dev/api/regions?start_date=2020-04-04&end_date=2020-04-04&region_code=16" id="LinkDistrictsLINK"> http://covid-json.dev/api/regions?start_date=2020-04-04&end_date=2020-04-04&region_code=16 </a></div>
+
+		</div>
+ 		<div class="col" id="Json">
+			[ </br>
+				&ensp;&ensp; { </br>
+				    &emsp;&emsp; “date”: “2020-04-04”, </br>
+				    &emsp;&emsp; “Nation”: “ITA”, </br>
+				    &emsp;&emsp; “region_code”: 16, </br>
+				    &emsp;&emsp; “region_name”: “Puglia”, </br>
+				    &emsp;&emsp; “hospitalized_with_symptoms”: 590, </br>
+				    &emsp;&emsp; “intensive_care”: 60, </br>
+				    &emsp;&emsp; “total_hospitalized”: 650, </br>
+				    &emsp;&emsp; “home_isolation”: 2136, </br>
+				    &emsp;&emsp; “total_positives”: 120, </br>
+				    &emsp;&emsp; “total_variation_positives”: 92, </br>
+				    &emsp;&emsp; “new_positives”: 120, </br>
+				    &emsp;&emsp; “released_cured”: 427, </br>
+				    &emsp;&emsp; “total_deaths”: 316, </br>
+				    &emsp;&emsp; “total_cases”: 41580, </br>
+				    &emsp;&emsp; “notes_en”: “”, </br>
+				    &emsp;&emsp; “notes_it”: “” </br>
+				&ensp;&ensp; } </br>
+			]
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+<div class="container-fluid" id="ContainerFriendlyURLSs">
+	<div class="row">
+		<div class="col-sm-4" id="RegionsDistricts">Friendly URLS</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-7" id="DescrizioneRegionsDistricts">
+			Si può utilizzare una forma human-friendly per entrambi gli endpoint. </br>
+			Per l’endpoint delle regioni sarà possibile specificare nella forma friendly il nome della regione oppure il suo codice istat. </br>
+			Ad es. sono entrambi validi questi endpoint:
+		</div>
+	</div>
+
+	<div class="row-1" id="ContainerLinkFriendlyURLSs">
+		
+			<button id="button" onclick="CopyToClipboard('LinkFriendlyURLSsNameLINK')">    
+		    	<div id="TestoButton">Copy code one </div>
+		    	<img id="ImgButton" src="img/logoCopy.png">
+			</button>
+			<button id="button" onclick="CopyToClipboard('LinkFriendlyURLSsNameLINK1')">    
+		    	<div id="TestoButton">Copy code two </div>
+		    	<img id="ImgButton" src="img/logoCopy.png">
+			</button>
+
+
+		 	<div class="col" id="LinkFriendlyURLSsName">GET<a class="nav-link" target="_blank" href="http://covid-json.dev/api/regions/puglia" id="LinkFriendlyURLSsNameLINK">http://covid-json.dev/api/regions/puglia</a></div>
+
+		 	<div class="col" id="LinkFriendlyURLSsName1">GET<a class="nav-link" target="_blank" href="http://covid-json.dev/api/regions/16" id="LinkFriendlyURLSsNameLINK1">http://covid-json.dev/api/regions/16</a></div>
+
+		 	</div>
+	</div>
+</div>
+
+
+
+
+
+<hr/ id="SecondoHr">
+
+
+
+
+
+
+<div class="container-fluid" id="Credits">
+
+	<div class="row">
+		<ul class="col-sm-3 nav flex-column" id="MenuCredits">	
+		    <div id="TextMenu">Menu</div>
+		  <li class="nav-item">
+		    <a class="nav-link" href="#" id="VociMenuCredits">Home</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="#" id="VociMenuCredits">Showcase</a>
+		  </li>
+		</ul>
+
+		<div class="col-sm-9" id="CreditsName">
+			<div class="text-sm-right" id="CreditsText" >Credits</div>
+			<div class="text-sm-right" id="CreditsTitolo">Back-end development</div>
+			<div class="text-sm-right" id="CreditsSottotitolo">Tommaso Orlando, George Petroiu</div>
+			<div class="text-sm-right" id="CreditsTitolo">Front-end development</div>
+			<div class="text-sm-right" id="CreditsSottotitolo">Roberto Basile</div>
+			<div class="text-sm-right" id="CreditsTitolo">Deploy</div>
+			<div class="text-sm-right" id="CreditsSottotitolo">Davide Dente</div>
+			<div class="text-sm-right" id="CreditsTitolo">Management</div>
+			<div class="text-sm-right" id="CreditsSottotitolo">Giuseppe Mastrandrea</div>
+		</div>
+	</div>
+</div>
+
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="js/bootstrap js/bootstrap.min.js"></script> 
+</body> 
+
 </html>
