@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AMCharts test</title>
+  <title>Chart.js test</title>
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="node_modules/choices.js/public/assets/styles/choices.min.css" />
 
@@ -18,7 +18,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3">
-        <h1>Test grafici con AMCharts</h1>
+        <h1>Test grafici con Chart.Js</h1>
         <p>
           Da leggere assolutamente:
           <a href="https://www.amcharts.com/docs/v4/concepts/data/" target="_blank">
@@ -32,9 +32,8 @@
     <div class="row">
       <div class="col-12">
         <h2>Grafico dinamico</h2>
-        <div id="dynamic" class="chart">
-          
-        </div>
+        <canvas id="dynamic" class="chart">
+        </canvas>
       </div>
     </div>
   </div>
@@ -45,10 +44,7 @@
 
 
   <!-- CHART LIB -->
-  <script src="//www.amcharts.com/lib/4/core.js"></script>
-  <script src="//www.amcharts.com/lib/4/charts.js"></script>
-  <script src="//www.amcharts.com/lib/4/themes/animated.js"></script>
-  <script src="//www.amcharts.com/lib/4/lang/it_IT.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
   <!-- TEMP COMMON OPS (init widgets, load test json, etc) -->
   <script type="text/javascript" src="../js/charts_common.js"></script>
@@ -58,8 +54,6 @@
 
     function draw(startDate, endDate, regions, districts, metrics){
 
-      /* Reset chart */
-      chart.dispose()
 
       /* regionsData is the array containing all the data */
       let = dataset = JSON.parse(JSON.stringify(regionsData)).sort(function(a, b){ return Date.parse(a.data) > Date.parse(b.data) }),
@@ -161,43 +155,44 @@
       console.log("DATA FIELDS: ")
       console.log(Object.keys(regionsData[0]))
 
-      am4core.useTheme(am4themes_animated);
+      var ctx = 'dynamic';
 
-      let chartData = regionsData.filter(function(d){
-        return d.codice_regione === 16
-      })
-
-      window.chart = am4core.create('dynamic', am4charts.XYChart)
-      
-      chart.data = chartData
-      let timeAxis = chart.xAxes.push(new am4charts.DateAxis())
-      timeAxis.title.text = "Data"
-      let valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
-      valueAxis.title.text = "Quantità assolute";
-
-      
-      /*
-      let columnSeries = chart.series.push(new am4charts.ColumnSeries());
-
-      columnSeries.columns.template.tooltipText = "Ricoverati con sintomi in Puglia il {dateX}: {valueY}";
-
-      columnSeries.dataFields.valueY = 'ricoverati_con_sintomi'
-      columnSeries.dataFields.dateX = 'data'
-
-      let lineSeries = chart.series.push(new am4charts.LineSeries());
-      lineSeries.tooltipText = "Deceduti in Puglia il {dateX}: {valueY}";
-      lineSeries.strokeWidth = 2
-      lineSeries.stroke = am4core.color('#ff0000')
-      lineSeries.dataFields.valueY = 'deceduti'
-      lineSeries.dataFields.dateX = 'data'
-
-      let bullet = lineSeries.bullets.push(new am4charts.Bullet());
-      let circle = bullet.createChild(am4core.Circle);
-      circle.width = 8;
-      circle.height = 8;
-      circle.fill = am4core.color('#ff0000')
-      circle.tooltipText = "Deceduti in Puglia: [bold]{deceduti}[/]";
-      */
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [...new Set(regionsData.map(item => item.denominazione_regione))],
+            datasets: [{
+                label: '# of Votes',
+                data: [...new Set(regionsData.map(item => item.terapia_intensiva))],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
 
     }
     
