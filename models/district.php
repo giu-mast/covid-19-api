@@ -1,6 +1,6 @@
 <?php
 
-define("COLUMNS",array("date","Nation","region_code","region_name","province_code","region_denomination","province_abbreviation","latitude","longitude","total_cases"));
+define("COLUMNS",array("date","Nation","region_code","region_name","province_code","province_denomination","province_abbreviation","latitude","longitude","total_cases"));
 define("PATH_CSV","../../csv/dpc-covid19-ita-province.csv");
 
 class District{
