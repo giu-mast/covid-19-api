@@ -2,7 +2,8 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AMCharts test</title>
+  <link rel="shortcut icon" href="../img/icona.ico" />
+  <title>API COVID-19</title>
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="node_modules/choices.js/public/assets/styles/choices.min.css" />
 
@@ -52,8 +53,14 @@
 
   <!-- TEMP COMMON OPS (init widgets, load test json, etc) -->
   <script type="text/javascript" src="../js/charts_common.js"></script>
-
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script type="text/javascript">
+    $(function() {
+        $('#api').change(function(){
+            $('.divs').hide();
+            $('#' + $(this).val()).fadeIn(500);
+        });
+    });
     //Chart library test with actual data
 
     function draw(startDate, endDate, regions, districts, metrics){
