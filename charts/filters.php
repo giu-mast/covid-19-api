@@ -1,4 +1,3 @@
-<form class="js-filters filters">
   <div class="form-row my-2">
     <div class="col d-flex align-items-center">
       <label for="api">
@@ -14,7 +13,7 @@
       </div>
     </div>
   </div>
-
+<form class="js-filters filters">
   <div class="form-row my-2">
     <div class="col d-flex align-items-center">
       <label for="start_date">
