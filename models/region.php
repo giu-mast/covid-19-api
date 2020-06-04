@@ -1,7 +1,7 @@
 <?php
 
 define("COLUMNS",array("date","nation","region_code","region_name","latitude","longitude","hospitalized_with_symptoms","intensive_care","total_hospitalized","home_isolation","total_positives","total_variation_positives","new_positives","released_cured","total_deaths","total_cases","swabs","testes_cases"));
-define("PATH_CSV","../../csv/dpc-covid19-ita-regioni.csv");
+define("PATH_CSV","../COVID-19/dati-regioni/dpc-covid19-ita-regioni.csv");
 
 class Region{
     
