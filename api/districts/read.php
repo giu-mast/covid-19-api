@@ -2,9 +2,9 @@
 
     header("Access-Control-Allow-Origin: *");
     header("Content-type: application/json; charset=utf-8");
-    include_once("../../data-layer/CSVReader.php");
-    include_once("../../data-layer/JSONAdapter.php");
-    include_once("../../models/district.php");
+    include_once($_SERVER["DOCUMENT_ROOT"]."/data-layer/CSVReader.php");
+    include_once($_SERVER["DOCUMENT_ROOT"]."/data-layer/JSONAdapter.php");
+    include_once($_SERVER["DOCUMENT_ROOT"]."/models/district.php");
    
     try{
         $obj_district = new District();
@@ -26,7 +26,9 @@
                         $single = false;
                     }
                 }
-                else{$single = false;}
+                else{
+                    $single = false;
+                }
                 if($obj_district->get_all($start_date,$single,$end_date) != false){
                     http_response_code(200);
                     echo $obj_district->get_all($start_date,$single,$end_date);

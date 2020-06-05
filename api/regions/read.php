@@ -1,9 +1,9 @@
 <?php
     header("Access-Control-Allow-Origin: *");
     header("Content-type: application/json; charset=utf-8");
-    include_once("../../data-layer/CSVReader.php");
-    include_once("../../data-layer/JSONAdapter.php");
-    include_once("../../models/region.php");
+    include_once($_SERVER["DOCUMENT_ROOT"]."/data-layer/CSVReader.php");
+    include_once($_SERVER["DOCUMENT_ROOT"]."/data-layer/JSONAdapter.php");
+    include_once($_SERVER["DOCUMENT_ROOT"]."/models/region.php");
     
     try{
         $obj_region = new Region();
@@ -70,8 +70,7 @@
     }
     catch(Exception $e){
         http_response_code(500);
-        $error_adapter = new JSONAdapter(array("status_code"=>500, "message"=>$e->getMessage()));
-        echo $error_adapter->get_json();
+        echo $obj_region->get_error_json(array("Status Code"=>"500","Server Error:"=>"{$e}"));
     }
 
 ?>
