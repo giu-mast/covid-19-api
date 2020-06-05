@@ -1,0 +1,25 @@
+php_value display_errors 1
+
+RewriteEngine on
+
+#condizioni per la creazione di ../grafici invece che ../charts/amcharts.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^grafici$ /charts/amcharts.php [NC]
+
+#condizioni per i vari url user-friendly
+#regions
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#region_name es=puglia
+RewriteRule ^api/regions/([a-zA-Z_]+)?$ api/regions/read.php?region_name=$1 [QSA,NC]
+#region_code es=16
+RewriteRule ^api/regions/([0-9]+)?$ api/regions/read.php?region_code=$1 [QSA,NC]
+
+#districts
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#district_name es=fg
+RewriteRule ^api/districts/([a-zA-Z_]+)?$ /api/districts/read.php?district_name=$1 [QSA,L]
+#district_code es=071 per la puglia
+RewriteRule ^api/districts/([0-9]+)?$ /api/districts/read.php?district_code=$1 [QSA,L]
