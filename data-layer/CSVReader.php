@@ -6,8 +6,11 @@ class CSVReader{
     private $headers;   
     
     public function __construct($filepath, $delimeter_c=",", $delimeter_r="\n", $enclosure='"', $escape="\\"){  
-        if(!is_readable($filepath)){   
-            throw new Exception("File Error:{$filepath} -> does not exist or is not readable."); 
+        if(!file_exists($filepath)){
+            throw new Exception("File Error: {$filepath} does not exist."); 
+        }
+        else if(!is_readable($filepath)){   
+            throw new Exception("File Error: {$filepath} does is not readable."); 
         }
         else{
             if(($this->filecsv = file_get_contents($filepath)) !== false){

@@ -25,7 +25,9 @@
                         $single = false;
                     }
                 }
-                else{$single = false;}
+                else{
+                    $single = false;
+                }
                 if($obj_region->get_all($start_date,$single,$end_date) != false){
                     http_response_code(200);
                     echo $obj_region->get_all($start_date,$single,$end_date);
@@ -68,7 +70,8 @@
     }
     catch(Exception $e){
         http_response_code(500);
-        echo $obj_region->get_error_json(array("Status Code"=>"500","Server Error:"=>"{$e}"));
+        $error_adapter = new JSONAdapter(array("status_code"=>500, "message"=>$e->getMessage()));
+        echo $error_adapter->get_json();
     }
 
 ?>
