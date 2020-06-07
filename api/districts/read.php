@@ -1,6 +1,6 @@
 <?php
 
-    define("E_LOG_PATH",$_SERVER["DOCUMENT_ROOT"]."/log_errors.txt");
+    if (!defined('E_LOG_PATH')) define("E_LOG_PATH",$_SERVER["DOCUMENT_ROOT"]."/log_errors.txt");;
     header("Access-Control-Allow-Origin: *");
     header("Content-type: application/json; charset=utf-8");
     include_once($_SERVER["DOCUMENT_ROOT"]."/data-layer/CSVReader.php");

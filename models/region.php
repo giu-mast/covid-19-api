@@ -2,6 +2,8 @@
 
 define("COLUMNS",array("date","nation","region_code","region_name","latitude","longitude","hospitalized_with_symptoms","intensive_care","total_hospitalized","home_isolation","total_positives","total_variation_positives","new_positives","released_cured","total_deaths","total_cases","swabs","testes_cases"));
 define("PATH_CSV",$_SERVER['DOCUMENT_ROOT']."/COVID-19/dati-regioni/dpc-covid19-ita-regioni.csv");
+if (!defined('E_LOG_PATH')) define("E_LOG_PATH",$_SERVER["DOCUMENT_ROOT"]."/log_errors.txt");;
+
 
 class Region{
     
@@ -20,6 +22,9 @@ class Region{
              $this->headers = $this->csvreader->get_headers();
         }catch(Exception $e){
             $this->jsonadapter = new JSONAdapter(array("Error_message"=>$e->getMessage()));
+            $fileError = fopen(E_LOG_PATH,"a");
+            fwrite($fileError,"[models -> regions] [date->".$current_date->format('Y-m-d H:i:s')."] [client_IP->".getUserIpAddr()."]" . $e->getMessage());
+            fclose($fileError);
             throw $e;
         }
     }
@@ -73,7 +78,8 @@ class Region{
                 }
             }
         }
-        return date("Y-m-d",$max_date);
+        // return date("Y-m-d", $max_date);
+        return date("Y-m-d");
    }
     
    public function filtered_get_regions($start_date=false, $single=false, $end_date=false, $region_code=false, $region_name=false){
@@ -90,6 +96,7 @@ class Region{
                 $element = strtoupper($element);
             }
         }
+
         if($single == true){
             if(strtotime($start_date) >= strtotime("2020-02-24") && strtotime($start_date) <= strtotime($this->get_max_date())){
                 $all = array();
@@ -119,7 +126,9 @@ class Region{
             }
         }
         else{
-            if((strtotime($end_date) >= strtotime($start_date)) && strtotime($end_date) >= strtotime("2020-02-24") && strtotime($start_date) >= strtotime("2020-02-24") && strtotime($end_date) <= strtotime($this->get_max_date()) && strtotime($start_date) <= strtotime($this->get_max_date())){
+            $cond = (strtotime($end_date) >= strtotime($start_date)) && strtotime($end_date) >= strtotime("2020-02-24") && strtotime($start_date) >= strtotime("2020-02-24") && strtotime($end_date) <= strtotime($this->get_max_date()) && strtotime($start_date) <= strtotime($this->get_max_date());
+
+            if($cond){
                 $all = array();
                 foreach($this->results_array as $item){
                     if(sizeof($region_code) == 0 && sizeof($region_name) == 0){

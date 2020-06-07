@@ -1,6 +1,6 @@
 <?php
 
-    define("E_LOG_PATH",$_SERVER["DOCUMENT_ROOT"]."/log_errors.txt");
+    if (!defined('E_LOG_PATH')) define("E_LOG_PATH",$_SERVER["DOCUMENT_ROOT"]."/log_errors.txt");;
     header("Access-Control-Allow-Origin: *");
     header("Content-type: application/json; charset=utf-8");
     include_once($_SERVER["DOCUMENT_ROOT"]."/data-layer/CSVReader.php");
@@ -52,7 +52,10 @@
                     echo $obj_region->get_error_json(array("Status Code"=>"422","Client Error"=>"Server unable to process the request, some values are not valid"));
                     $current_date = new DateTime();
                     $fileError = fopen(E_LOG_PATH,"a");
-                    fwrite($fileError,"[endpoint->regions] [date->".$current_date->format('Y-m-d H:i:s')."] [client_IP->".getUserIpAddr()."] [Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]");
+                    fwrite(
+                        $fileError,
+                        "[endpoint->regions] [date->".$current_date->format('Y-m-d H:i:s')."] [client_IP->".getUserIpAddr()."]\n\r[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]\n\r\n\r"
+                    );
                     fclose($fileError);
                 }
             }
@@ -81,7 +84,10 @@
                     echo $obj_region->get_error_json(array("Status Code"=>"422","Client Error"=>"Server unable to process the request, some values are not valid"));
                     $current_date = new DateTime();
                     $fileError = fopen(E_LOG_PATH,"a");
-                    fwrite($fileError,"[endpoint->regions] [date->".$current_date->format('Y-m-d H:i:s')."] [client_IP->".getUserIpAddr()."] [Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]");
+                    fwrite(
+                        $fileError,
+                        "[endpoint->regions] [date->".$current_date->format('Y-m-d H:i:s')."] [client_IP->".getUserIpAddr()."]\n\r[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]\n\r\n\r"
+                    );
                     fclose($fileError);
                 }
             }
