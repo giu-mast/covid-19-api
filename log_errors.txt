@@ -1,0 +1,1 @@
+[date->2020-06-07 12:03:18] [client_IP->127.0.0.1] [Client_Error->No valid value passed in the query string] [Status_Code->400]
