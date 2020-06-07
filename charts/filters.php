@@ -26,8 +26,8 @@
             type="date" 
             id="start_date" 
             name="start_date"
-            value="2020-02-01"
-            min="2020-02-01" max="2020-06-01">
+            value="2020-02-24"
+            min="2020-02-24" max="2020-06-30">
       </div>
     </div>
   </div>
@@ -44,7 +44,7 @@
             type="date" 
             id="end_date" 
             name="end_date"
-            min="2020-02-01" max="2020-06-01">
+            min="2020-02-24" max="2020-06-30">
       </div>
     </div>
   </div>
@@ -215,22 +215,22 @@
       <div class="form-field">
         <label for="deceduti">
           Deceduti
-          <input id="deceduti" type="checkbox" name="metrics[]" value="deceduti" />
+          <input id="deceduti" type="checkbox" name="metrics[]" value="total_deaths" />
         </label>
 
         <label for="totale_casi">
           Totale casi
-          <input id="totale_casi" type="checkbox" name="metrics[]" value="totale_casi" />
+          <input id="totale_casi" type="checkbox" name="metrics[]" value="total_cases" />
         </label>
 
         <label for="dimessi_guariti">
           Dimessi guariti
-          <input id="dimessi_guariti" type="checkbox" name="metrics[]" value="dimessi_guariti" />
+          <input id="dimessi_guariti" type="checkbox" name="metrics[]" value="released_cured" />
         </label>
 
         <label for="tamponi">
           Tamponi
-          <input id="tamponi" type="checkbox" name="metrics[]" value="tamponi" />
+          <input id="tamponi" type="checkbox" name="metrics[]" value="swabs" />
         </label>
       </div>
     </div>

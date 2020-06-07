@@ -52,7 +52,7 @@
   <script src="//www.amcharts.com/lib/4/lang/it_IT.js"></script>
 
   <!-- TEMP COMMON OPS (init widgets, load test json, etc) -->
-  <script type="text/javascript" src="../js/charts_common.js"></script>
+  
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script type="text/javascript">
     $(function() {
@@ -63,51 +63,49 @@
     });
     //Chart library test with actual data
 
-    function draw(startDate, endDate, regions, districts, metrics){
+    let regionObject = {
+      13: "Abruzzo",
+      17: "Basilicata",
+      21: "Bolzano",
+      18: "Calabria",
+      15: "Campania",
+      8: "Emilia-Romagna",
+      6: "Friuli Venezia Giulia",
+      12: "Lazio",
+      7: "Liguria",
+      3: "Lombardia",
+      11: "Marche",
+      14: "Molise",
+      1: "Piemonte",
+      16: "Puglia",
+      20: "Sardegna",
+      19: "Sicilia",
+      9: "Toscana",
+      22: "Trento",
+      10: "Umbria",
+      2: "Valle d'Aosta",
+      5: "Veneto",
+    };
 
+    let metricsTranslations = {
+      'total_deaths': 'Totale morti'
+    }
+
+    function draw(data, metrics){
       /* Reset chart */
-      chart.dispose()
+      xyChart.dispose()
 
       /* regionsData is the array containing all the data */
-      let = dataset = JSON.parse(JSON.stringify(regionsData)).sort(function(a, b){ return Date.parse(a.data) > Date.parse(b.data) }),
-            start   = Date.parse(startDate),
-            end     = Date.parse(endDate);
       
-      /* Metriche uguali devono avere tipi di series uguali! */
-      /* Regioni uguali devono avere colori uguali! */
-      
-      /* IMPORTANT!! data filtering */
-
-      if(!!start){
-        dataset = dataset.filter(function(obj){
-          return Date.parse(obj.data) > start
-        })
-      }
-
-      if(!!end){
-        dataset = dataset.filter(function(obj){
-          return Date.parse(obj.data) < end
-        })
-      }
-
-      if(!!regions.length){
-        dataset = dataset.filter(function(obj){
-          return regions.includes(obj.codice_regione)
-        })
-      }
-
-      if(!!districts.length){
-        dataset = dataset.filter(function(obj){
-          return districts.includes(obj.codice_regione)
-        })
-      }
+      let dataset = regionsData;
+      console.log(regionsData)
       
       console.log("dataset length", dataset.length)
       
       /* Create new chart */
 
-      chart = am4core.create('dynamic', am4charts.XYChart)
-      chart.colors.list = [
+      xyChart = am4core.create('dynamic', am4charts.XYChart)
+      xyChart.colors.list = [
         am4core.color("#845EC2"),
         am4core.color("#D65DB1"),
         am4core.color("#FF6F91"),
@@ -116,44 +114,38 @@
         am4core.color("#F9F871")
       ];
 
-      let timeAxis = chart.xAxes.push(new am4charts.DateAxis())
+      let timeAxis = xyChart.xAxes.push(new am4charts.DateAxis())
       timeAxis.title.text = "Data"
-      let valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
+      let valueAxis = xyChart.yAxes.push(new am4charts.ValueAxis())
       valueAxis.title.text = "Quantità assolute";
 
       /* create series */
-      regions.forEach(function(region){
+      data.forEach(function(region){
         metrics.forEach(function(metric){
           /* Corrispondenza metrica -> series */
           switch(metric){
-            case 'totale_casi':
-            case 'dimessi_guariti':
-            case 'tamponi':
-              let columnSeries = chart.series.push( new am4charts.ColumnSeries() );  
+            case 'total_cases':
+            case 'released_cured':
+            case 'swabs':
+              let columnSeries = xyChart.series.push( new am4charts.ColumnSeries() );  
               columnSeries.dataFields.valueY = metric
               columnSeries.dataFields.dateX = 'data'
               columnSeries.columns.template.tooltipText = `${metric} in ${region} il {dateX}: {valueY}`;
-              columnSeries.data = dataset.filter(function(d){
-                return d.codice_regione === region
-              })
+              columnSeries.data = dataset
             break;
-            case 'deceduti':
-              console.log(`${metric} in ${region}`)
-              let lineSeries = chart.series.push( new am4charts.LineSeries() );
-              lineSeries.tooltipText = `${metric} in ${region} il {dateX}: {valueY}`;
+            case 'total_deaths':
+              /*console.log(`${metric} in ${region.region_name}`)*/
+              let lineSeries = xyChart.series.push( new am4charts.LineSeries() );
+              lineSeries.tooltipText = `${metricsTranslations[metric]} in ${regionObject[region]} il {dateX}: {valueY}`;
               lineSeries.strokeWidth = 2
               lineSeries.dataFields.valueY = metric
-              lineSeries.dataFields.dateX = 'data'
-              lineSeries.dataFields.valueY = metric
-              lineSeries.dataFields.dateX = 'data'
+              lineSeries.dataFields.dateX = 'date'
               let bullet = lineSeries.bullets.push(new am4charts.Bullet());
               let circle = bullet.createChild(am4core.Circle);
               circle.width = 8;
               circle.height = 8;
-              circle.tooltipText = `${metric} in ${region}: {${metric}}`;
-              lineSeries.data = dataset.filter(function(d){
-                return d.codice_regione === region
-              })
+              circle.tooltipText = `${metricsTranslations[metric]} in ${regionObject[region]} il {dateX}: {${metric}}`;
+              lineSeries.data = dataset
             break;
             default:
               console.log(`${metric} still not handled`)
@@ -164,24 +156,24 @@
 
     }
 
-    function createXYChart(){
+    function chartsInit(){
+      /*
       console.log("DATA FIELDS: ")
       console.log(Object.keys(regionsData[0]))
+      */
 
       am4core.useTheme(am4themes_animated);
 
-      let chartData = regionsData.filter(function(d){
-        return d.codice_regione === 16
-      })
-
-      window.chart = am4core.create('dynamic', am4charts.XYChart)
+      window.xyChart = am4core.create('dynamic', am4charts.XYChart)
       
+      /*
+
       chart.data = chartData
       let timeAxis = chart.xAxes.push(new am4charts.DateAxis())
       timeAxis.title.text = "Data"
       let valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
       valueAxis.title.text = "Quantità assolute";
-
+      */
       
       /*
       let columnSeries = chart.series.push(new am4charts.ColumnSeries());
@@ -209,5 +201,6 @@
     }
     
   </script>
+  <script type="text/javascript" src="../js/charts_common.js"></script>
 </body>
 </html>
