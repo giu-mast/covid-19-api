@@ -62,43 +62,42 @@
         });
     });
 
-    function createSeries(chart, metric,) {
-      var series = chart.series.push(new am4charts.LineSeries());
-      series.dataFields.valueY = metric;
-      series.dataFields.dateX = "date";
-      series.name = metricsTranslations[metric];
-      series.tooltipText = "{dateX}: [b]{valueY}[/]";
-      series.strokeWidth = 2;
-      
-      var bullet = series.bullets.push(new am4charts.CircleBullet());
-      bullet.circle.stroke = am4core.color("#fff");
-      bullet.circle.strokeWidth = 2;
-      series.data = dataset.filter(function(d){
-        return d.codice_regione === region
-      })
-      return series;
-    }
-    
+    /* 1. VAI A VEDERE IN charts_common COSA SUCCEDE DURANTE L'INIZIALIZZAZIONE */
 
     function draw(data, metrics){
-      /* Reset chart */
+      /* Reset charts */
       xyChart.dispose()
 
-      /* fetchedData is the array containing all the fetched data */
+      /* in fetchedData ho tutti i dati prelevati dalle API */
       
       let dataset = fetchedData;
       console.log(fetchedData)
       
-      console.log("dataset length", dataset.length)
-      
-      /* Create new chart */
+      /* Ricreo il grafico */
 
       xyChart = am4core.create('dynamic', am4charts.XYChart);
 
+
+      /*  
+          Asse X -> Date
+          Asse Y -> numeri 
+      */
       var timeAxis = xyChart.xAxes.push(new am4charts.DateAxis())
       timeAxis.title.text = "Data"
       var valueAxis = xyChart.yAxes.push(new am4charts.ValueAxis())
       valueAxis.title.text = "Quantità assolute";
+
+      /*
+        Ecco la parte più complicata:
+        PER OGNI REGIONE che ho selezionato nella select e PER OGNI METRICA (deceduti, totale casi, etc)
+        vado a creare una series di amcharts e la vado ad aggiungere al grafico
+
+        Uso uno switch per capire a seconda della metrica di turno quale tipo di series utilizzare (ColumnSeries o LineSeries epr il momento)
+
+        per le metriche released_cured, swabs, region_code, intensive_care, total_hospitalized, etc uso una ColumnSeries
+        per le metriche total_deaths, total_cases utilizzo una LineSeries
+
+      */
 
       data.forEach(function(region){
         metrics.forEach(function(metric){
@@ -119,13 +118,17 @@
               case 'testes_cases':
                 console.log(`ColumnSeries in ${regions[region]} for metric -> ${metric}`)
                 var columnSeries = xyChart.series.push( new am4charts.ColumnSeries() );  
+
+                /* Qui setto quale metrica (es. "released_cured", "swabs") deve vedere la series per l'asse Y*/
                 columnSeries.dataFields.valueY = metric
+                /* Qui setto quale metrica (il campo "date") deve vedere la series per l'asse X */
                 columnSeries.dataFields.dateX = 'date'
                 columnSeries.columns.template.tooltipText = `${metricsTranslations[metric]} in ${regions[region]} il {dateX}: {valueY}`;
+
+                /* Assegno i dati filtrati per regione alla series */
                 var d = dataset.filter(function(o){
                   return parseInt(o.region_code) === region
                 });
-                console.log(d.length, d)
                 columnSeries.data = d
               break;
             break;
@@ -135,56 +138,28 @@
               var lineSeries = xyChart.series.push( new am4charts.LineSeries() );
               lineSeries.tooltipText = `${metricsTranslations[metric]} in ${regions[region]} il {dateX}: {valueY}`;
               lineSeries.strokeWidth = 2
+              /* Qui setto quale metrica (es. "released_cured", "swabs") deve vedere la series per l'asse Y*/
               lineSeries.dataFields.valueY = metric
+              /* Qui setto quale metrica (il campo "date") deve vedere la series per l'asse X */
               lineSeries.dataFields.dateX = 'date'
+
+              /* creo il cerchietto interattivo per vedere informazioni quando passo col mouse */
+
               var bullet = lineSeries.bullets.push(new am4charts.Bullet());
               var circle = bullet.createChild(am4core.Circle);
               circle.width = 8;
               circle.height = 8;
               circle.tooltipText = `${metricsTranslations[metric]} in ${regions[region]} il {dateX}: {valueY}`;
+              
+              /* Assegno i dati filtrati per regione alla series */
               var d = dataset.filter(function(o){
                 return parseInt(o.region_code) === region
               })
-              console.log(d);
               lineSeries.data = d;
             break;
           }
         })
       });
-
-      //data.forEach(function(region){
-      //  metrics.forEach(function(metric){
-      //    /* Corrispondenza metrica -> series */
-      //    switch(metric){
-      //      case 'total_cases':
-      //      case 'released_cured':
-      //      case 'swabs':
-      //        let columnSeries = xyChart.series.push( new am4charts.ColumnSeries() );  
-      //        columnSeries.dataFields.valueY = metric
-      //        columnSeries.dataFields.dateX = 'data'
-      //        columnSeries.columns.template.tooltipText = `${metric} in ${region} il {dateX}: {valueY}`;
-      //        columnSeries.data = dataset
-      //      break;
-      //      case 'total_deaths':
-      //        let lineSeries = xyChart.series.push( new am4charts.LineSeries() );
-      //        lineSeries.tooltipText = `${metricsTranslations[metric]} in ${regions[region]} il {dateX}: //{valueY}`;
-      //        lineSeries.strokeWidth = 2
-      //        lineSeries.dataFields.valueY = metric
-      //        lineSeries.dataFields.dateX = 'date'
-      //        let bullet = lineSeries.bullets.push(new am4charts.Bullet());
-      //        let circle = bullet.createChild(am4core.Circle);
-      //        circle.width = 8;
-      //        circle.height = 8;
-      //        circle.tooltipText = `${metricsTranslations[metric]} in ${regions[region]} il {dateX}: {${metric}//}`;
-      //        lineSeries.data = dataset
-      //      break;
-      //      default:
-      //        console.log(`${metric} still not handled`)
-      //      break;
-      //    }
-      //  })
-      //});
-
     }
 
     function chartsInit(){

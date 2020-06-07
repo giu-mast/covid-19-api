@@ -18,17 +18,34 @@ let fetchedData,
       'testes_cases': 'Casti testati'
     };
 
-
+/* 
+  Popolo un oggetto "regions" utile per le traduzioni. Alla fine avrò un oggetto così:
+  {
+    1: "Piemonte", 2: "Valle d'Aosta", 3: "Lombardia", etc etc
+  }
+  così se per es. vado a fare alert(regions[3]) mi stamperà nell'alert "Lombardia"
+*/
 document.querySelector("[name=regions]").options.forEach((o)=>{
   regions[parseInt(o.value)] = o.innerHTML
 })
+
+
+/* 
+  Popolo un oggetto "districts" utile per le traduzioni. Alla fine avrò un oggetto così:
+  {
+    "CH": "Chieti", "AQ": "L'Aquila", "PE": "Pescare", etc etc
+  }
+  così se per es. vado a fare alert(districts["PE"]) mi stamperà nell'alert "Pescara"
+*/
 document.querySelector("[name=districts]").options.forEach((o)=>{
   districts[o.value] = o.innerHTML
 })
 
+
+/* Creo i grafici vuoti*/ 
 chartsInit();
 
-/* Autocomplete Startup */
+/* Startup libreria per autocomplete regioni e province */
 let choices = document.querySelectorAll('.js-choices'),
     instances = [];
 choices.forEach(function(el){
@@ -44,6 +61,10 @@ choices.forEach(function(el){
   );
 })
 
+
+/* Costruisce l'endpoint a cui fare le richieste: 
+    es. '/api/regions/read.php?region_code=13&start_date=2020-02-24&end_date=2020-06-01'
+*/
 function buildUrl(endpoint, obj){
   let url = endpoint
 
@@ -57,7 +78,7 @@ function buildUrl(endpoint, obj){
   return '/api/' + url + '/read.php?' + Object.keys(obj).map(key => key + '=' + obj[key]).join('&');
 }
 
-/* Form Event Handlers */
+/* Event Handler alla submit del form */
 const form = document.querySelector('form');
 form.addEventListener('submit', function(e){
   e.preventDefault();
@@ -77,13 +98,14 @@ form.addEventListener('submit', function(e){
   
   console.log(url)
 
-
+  /* FACCIO LA RICHIESTA ALL'URL CREATO */
   fetch(url)
   .then(function(response){
     return response.json()
   })
   .then(function(data){
     data.forEach((d)=>{
+      /* Monkeypatch: converto alcuni valori in numeri, dalle API mi arrivano come stringa */
       Object.keys(d).forEach((k)=>{
         switch(k){
           case 'latitude':
@@ -108,10 +130,17 @@ form.addEventListener('submit', function(e){
         }
       })
     })
+
+    /* inserisco nella variabile globale fetchedData i risultati della chiamata ad API */
     fetchedData = data
-    /* Here i call global function onCSVLoad */
-    chartsInit()
-    /* Here i call draw() global function to make the actual chart drawing */
+    
+    
+    /* 
+      Qui chiamo la funzione globale draw() che è presente in amcharts.php
+      Qui cioè vado a resettare il grafico presente e a creare le nuove series
+      VAI A VEDERE LA FUNZIONE DRAW() presente in amcharts.php
+
+     */
     draw(apiType === 'regions' ? regions : districts, metrics);
   })
   .catch(function(e){
