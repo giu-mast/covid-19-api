@@ -84,10 +84,10 @@
       /* Reset chart */
       xyChart.dispose()
 
-      /* regionsData is the array containing all the fetched data */
+      /* fetchedData is the array containing all the fetched data */
       
-      let dataset = regionsData;
-      console.log(regionsData)
+      let dataset = fetchedData;
+      console.log(fetchedData)
       
       console.log("dataset length", dataset.length)
       
