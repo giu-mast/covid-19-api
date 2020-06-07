@@ -1,5 +1,5 @@
 /* Initialize custom select elements */
-let regionsData,
+let fetchedData,
     regions = {},
     districts = {},
     metricsTranslations = {
@@ -108,7 +108,7 @@ form.addEventListener('submit', function(e){
         }
       })
     })
-    regionsData = data
+    fetchedData = data
     /* Here i call global function onCSVLoad */
     chartsInit()
     /* Here i call draw() global function to make the actual chart drawing */
