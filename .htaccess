@@ -7,19 +7,14 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^grafici$ /charts/amcharts.php [NC]
 
-#condizioni per i vari url user-friendly
-#regions
+#modrewrite per il link .../api/regions/read.php?etc
+#in questo caso abbiamo la query string incollata a .../regions?etc
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-#region_name es=puglia
-RewriteRule ^api/regions/([a-zA-Z_]+)?$ api/regions/read.php?region_name=$1 [QSA,NC]
-#region_code es=16
-RewriteRule ^api/regions/([0-9]+)?$ api/regions/read.php?region_code=$1 [QSA,NC]
+RewriteRule ^regions?$ api/regions/read.php [QSA]
 
-#districts
+#modrewrite per il link .../api/districts/read.php?etc
+#in questo caso abbiamo la query string incollata a .../districts?etc
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-#district_name es=fg
-RewriteRule ^api/districts/([a-zA-Z_]+)?$ /api/districts/read.php?district_name=$1 [QSA,L]
-#district_code es=071 per la puglia
-RewriteRule ^api/districts/([0-9]+)?$ /api/districts/read.php?district_code=$1 [QSA,L]
+RewriteRule ^districts?$ api/districts/read.php [QSA]
