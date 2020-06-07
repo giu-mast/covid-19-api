@@ -1,5 +1,30 @@
 /* Initialize custom select elements */
-let regionsData;
+let regionsData,
+    regions = {},
+    districts = {},
+    metricsTranslations = {
+      'region_code': 'Codice ISTAT Regione',
+      'intensive_care': 'Terapia Intensiva',
+      'total_hospitalized': 'Totale ospedalizzati',
+      'hospitalized_with_symptoms': 'Ospedalizzati con sintomi',
+      'home_isolation': 'Isolamento domestico',
+      'total_positives': 'Totale positivi',
+      'total_variation_positives': 'Variazione totale positivi',
+      'new_positives': 'Nuovi positivi',
+      'released_cured': 'Dimessi guariti',
+      'total_deaths': 'Morti totali',
+      'total_cases': 'Casi totali',
+      'swabs': 'Tamponi',
+      'testes_cases': 'Casti testati'
+    };
+
+
+document.querySelector("[name=regions]").options.forEach((o)=>{
+  regions[parseInt(o.value)] = o.innerHTML
+})
+document.querySelector("[name=districts]").options.forEach((o)=>{
+  districts[o.value] = o.innerHTML
+})
 
 chartsInit();
 
