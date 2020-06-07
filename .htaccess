@@ -1,4 +1,4 @@
-php_value display_errors 1
+# php_value display_errors 1
 
 RewriteEngine on
 
