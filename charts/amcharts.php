@@ -18,7 +18,7 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-md-6 offset-md-3">
+      <div class="col-md-8 offset-md-2">
         <h1>Grafici interattivi</h1>
         <p>
           Da leggere assolutamente:
@@ -30,7 +30,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-6 offset-md-3 my-5">
+      <div class="col-md-8 offset-md-2 my-5">
         <h2>Istogramma</h2>
         <?php require('filters.php'); ?>
       </div>
@@ -45,7 +45,7 @@
 
 
     <div class="row">
-      <div class="col-md-6 offset-md-3 my-5">
+      <div class="col-md-8 offset-md-2 my-5">
         <h2>Grafico a torta</h2>
         <?php require('filters_pie.php'); ?>
       </div>
