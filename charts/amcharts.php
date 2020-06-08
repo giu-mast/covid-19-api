@@ -4,8 +4,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="../img/icona.ico" />
   <title>API COVID-19</title>
-  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="node_modules/choices.js/public/assets/styles/choices.min.css" />
+  <link rel="stylesheet" href="/charts/node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/charts/node_modules/choices.js/public/assets/styles/choices.min.css" />
 
   <!-- custom style -->
   <style type="text/css">
@@ -19,30 +19,50 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3">
-        <h1>Test grafici con AMCharts</h1>
+        <h1>Grafici interattivi</h1>
         <p>
           Da leggere assolutamente:
           <a href="https://www.amcharts.com/docs/v4/concepts/data/" target="_blank">
             AMCharts v.4 - Data
           </a>
         </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 offset-md-3 my-5">
+        <h2>Istogramma</h2>
         <?php require('filters.php'); ?>
       </div>
     </div>
 
     <div class="row">
       <div class="col-12">
-        <h2>Grafico dinamico</h2>
         <div id="dynamic" class="chart">
-          
         </div>
       </div>
     </div>
+
+
+    <div class="row">
+      <div class="col-md-6 offset-md-3 my-5">
+        <h2>Grafico a torta</h2>
+        <?php require('filters_pie.php'); ?>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div id="piechart" class="chart">
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <!-- LIBS AND POLYFILL -->
-  <script src="node_modules/date-input-polyfill/date-input-polyfill.dist.js"></script>
-  <script src="node_modules/choices.js/public/assets/scripts/choices.min.js"></script>
+  <script src="/charts/node_modules/date-input-polyfill/date-input-polyfill.dist.js"></script>
+  <script src="/charts/node_modules/choices.js/public/assets/scripts/choices.min.js"></script>
 
 
   <!-- CHART LIB -->
@@ -56,15 +76,30 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script type="text/javascript">
     $(function() {
-        $('#api').change(function(){
-            $('.divs').hide();
-            $('#' + $(this).val()).fadeIn(500);
-        });
+        $('.js-api').each(function(i,v){
+          let $form = $(v).closest('form');
+          $(v).change(function(){
+            $form.find('.divs').hide();
+            $form.find('.' + $(this).val()).fadeIn(500);
+          });
+        })
     });
 
     /* 1. VAI A VEDERE IN charts_common COSA SUCCEDE DURANTE L'INIZIALIZZAZIONE */
 
     function draw(data, metrics){
+
+      /* 
+        in data se ho selezionato le regioni:
+          - ho l'elenco degli id delle regioni (1, 3, 4, etc)
+        se ho selezionato le province:
+          - ho l'elenco delle sigle delle province (BA, FG, RM, etc)
+        
+        in metrics ho un array delle metriche selezionate :
+          ['total_deaths', 'swabs', etc etc]
+
+      */
+
       /* Reset charts */
       xyChart.dispose()
 
@@ -162,10 +197,17 @@
       });
     }
 
+
+    function drawPie(){
+      console.log("1 - Dispose del grafico precedente")
+      console.log("2 - Crea un nuovo grafico vuoto")
+      console.log("3 - Aggiungi una series al grafico vuoto")
+    }
+
     function chartsInit(){
       am4core.useTheme(am4themes_animated);
       window.xyChart = am4core.create('dynamic', am4charts.XYChart)
-
+      window.pieChart = am4core.create('piechart', am4charts.PieChart)
     }
     
   </script>

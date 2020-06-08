@@ -1,4 +1,4 @@
-<form id="filters_histogram" class="js-filters filters">
+<form id="filters_pie" class="js-filters filters">
   <div class="form-row my-2">
     <div class="col d-flex align-items-center">
       <label for="api">
@@ -16,34 +16,17 @@
   </div>
   <div class="form-row my-2">
     <div class="col d-flex align-items-center">
-      <label for="start_date">
-        Dal
+      <label for="start_date_pie">
+        Giorno
       </label>
     </div>
     <div class="col">
       <div class="form-field">
         <input 
             type="date" 
-            id="start_date" 
+            id="start_date_pie" 
             name="start_date"
             value="2020-02-24"
-            min="2020-02-24" max="2020-06-30">
-      </div>
-    </div>
-  </div>
-
-  <div class="form-row my-2">
-    <div class="col d-flex align-items-center">
-      <label for="end_date">
-        Al
-      </label>
-    </div>
-    <div class="col">
-      <div class="form-field">
-        <input 
-            type="date" 
-            id="end_date" 
-            name="end_date"
             min="2020-02-24" max="2020-06-30">
       </div>
     </div>
@@ -213,24 +196,24 @@
     </div>
     <div class="col">
       <div class="form-field">
-        <label for="deceduti">
+        <label for="deceduti_pie">
           Deceduti
-          <input id="deceduti" type="checkbox" name="metrics[]" value="total_deaths" />
+          <input id="deceduti_pie" type="radio" name="metric" value="total_deaths" />
         </label>
 
-        <label for="totale_casi">
+        <label for="totale_casi_pie">
           Totale casi
-          <input id="totale_casi" type="checkbox" name="metrics[]" value="total_cases" />
+          <input id="totale_casi_pie" type="radio" name="metric" value="total_cases" />
         </label>
 
-        <label for="dimessi_guariti">
+        <label for="dimessi_guariti_pie">
           Dimessi guariti
-          <input id="dimessi_guariti" type="checkbox" name="metrics[]" value="released_cured" />
+          <input id="dimessi_guariti_pie" type="radio" name="metric" value="released_cured" />
         </label>
 
-        <label for="tamponi">
+        <label for="tamponi_pie">
           Tamponi
-          <input id="tamponi" type="checkbox" name="metrics[]" value="swabs" />
+          <input id="tamponi_pie" type="radio" name="metric" value="swabs" />
         </label>
       </div>
     </div>

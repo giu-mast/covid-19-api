@@ -79,16 +79,17 @@ function buildUrl(endpoint, obj){
 }
 
 /* Event Handler alla submit del form */
-const form = document.querySelector('form');
+const form = document.querySelector('#filters_histogram'),
+      pieForm = document.querySelector('#filters_pie');
 form.addEventListener('submit', function(e){
   e.preventDefault();
-  let sel         = document.querySelector('#api'),
+  let sel         = form.querySelector('select'),
       apiType     = sel.options[sel.selectedIndex].value,
-      startDate   = document.querySelector('[name=start_date]').value,
-      endDate     = document.querySelector('[name=end_date]').value, 
-      regions     = [...document.querySelector('[name=regions]')].map(d=>parseInt(d.value)),
-      districts   = [...document.querySelector('[name=districts]')].map(d=>d.value),
-      metrics     = [...document.querySelector('form').elements["metrics[]"]].filter(d=>d.checked).map(d=>d.value) ,
+      startDate   = form.querySelector('[name=start_date]').value,
+      endDate     = form.querySelector('[name=end_date]').value, 
+      regions     = [...form.querySelector('[name=regions]')].map(d=>parseInt(d.value)),
+      districts   = [...form.querySelector('[name=districts]')].map(d=>d.value),
+      metrics     = [...form.elements["metrics[]"]].filter(d=>d.checked).map(d=>d.value) ,
       url         = buildUrl(apiType, {
         region_code: regions, 
         district_code: districts, 
@@ -149,3 +150,17 @@ form.addEventListener('submit', function(e){
   })
   return false;
 })
+
+
+pieForm.addEventListener('submit', function(e){
+  e.preventDefault()
+  console.log('1 - PRENDO I VALORI DEI CAMPI SELEZIONATI')
+  console.log('2 - COSTRUISCO L\'URL')
+  console.log('3 - FACCIO LA RICHIESTA TRAMITE UNA fetch')
+  console.log('4 - fetchedData = data ---> MOLTO IMPORTANTE')
+  console.log('5 - chiamare drawPie()')
+
+  
+  drawPie();
+  return false;
+});
