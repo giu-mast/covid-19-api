@@ -210,6 +210,7 @@ form.addEventListener('submit', function(e){
 
      */
     drawPie(apiType === 'regions' ? regions : districts, metric);
+    drawRadar(apiType === 'regions' ? regions : districts, metric);
   })
   .catch(function(e){
     console.log(e)

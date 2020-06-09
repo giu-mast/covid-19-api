@@ -65,6 +65,37 @@
         </select>
       </div>
     </div>
+    <br>
+    <div class="form-row my-2">
+    <div class="col d-flex align-items-center">
+      <label for="regions">
+        Metriche
+      </label>
+    </div>
+    <div class="col">
+      <div class="form-field">
+        <label for="deceduti_pie">
+          Deceduti
+          <input id="deceduti_pie" type="radio" name="metric" value="total_deaths" />
+        </label>
+
+        <label for="totale_casi_pie">
+          Totale casi
+          <input class="totale_casi_pie" type="radio" name="metric" value="total_cases" checked="checked">
+        </label>
+
+        <label for="dimessi_guariti_pie">
+          Dimessi guariti
+          <input id="dimessi_guariti_pie" type="radio" name="metric" value="released_cured" />
+        </label>
+
+        <label for="tamponi_pie">
+          Tamponi
+          <input id="tamponi_pie" type="radio" name="metric" value="swabs" />
+        </label>
+      </div>
+    </div>
+  </div>
   </div>
 
   <div class="form-row my-2 divs districts" style="display:none">
@@ -186,9 +217,8 @@
         </select>
       </div>
     </div>
-  </div>
-
-  <div class="form-row my-2">
+      <br>
+    <div class="form-row my-2">
     <div class="col d-flex align-items-center">
       <label for="regions">
         Metriche
@@ -196,27 +226,13 @@
     </div>
     <div class="col">
       <div class="form-field">
-        <label for="deceduti_pie">
-          Deceduti
-          <input id="deceduti_pie" type="radio" name="metric" value="total_deaths" />
-        </label>
-
         <label for="totale_casi_pie">
           Totale casi
-          <input id="totale_casi_pie" type="radio" name="metric" value="total_cases" />
-        </label>
-
-        <label for="dimessi_guariti_pie">
-          Dimessi guariti
-          <input id="dimessi_guariti_pie" type="radio" name="metric" value="released_cured" />
-        </label>
-
-        <label for="tamponi_pie">
-          Tamponi
-          <input id="tamponi_pie" type="radio" name="metric" value="swabs" />
+          <input class="totale_casi_pie" type="radio" name="metric" value="total_cases" checked="checked">
         </label>
       </div>
     </div>
+  </div>
   </div>
 
   <div class="form-row my-2">

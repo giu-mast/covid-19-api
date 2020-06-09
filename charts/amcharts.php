@@ -13,6 +13,12 @@
       background: #eee;
       min-height: 400px; 
     }
+    .form-row.my-2.divs.regions{
+      display:block;   
+    }
+    .form-row.my-2.divs.districts{
+      display:block;  
+    }
   </style>
 </head>
 <body>
@@ -51,6 +57,14 @@
         </div>
       </div>
     </div>
+    
+    <div class="row">
+      <div class="col-12">
+        <div id="radarchart" class="chart">
+        </div>
+      </div>
+    </div>
+
 
   </div>
 
@@ -78,6 +92,10 @@
           });
         })
     });
+      
+    function get_R_D(data){
+        
+    }
 
     /* 1. VAI A VEDERE IN charts_common COSA SUCCEDE DURANTE L'INIZIALIZZAZIONE */
 
@@ -222,14 +240,45 @@
         pieChart.legend = new am4charts.Legend();
         
         pieChart.exporting.menu = new am4core.ExportMenu();
+        console.log(data)
+    }
+    
+    function drawRadar(data, metrics){
+              
+      Radar_Chart.dispose();
+    
+      Radar_Chart = am4core.create("radarchart", am4charts.RadarChart);
+        
+      let dataset = fetchedData;
+      console.log(fetchedData)
+        
+      Radar_Chart.data = dataset;
+        
+      let categoryAxis = Radar_Chart.xAxes.push(new am4charts.CategoryAxis());
+      categoryAxis.dataFields.category = "region_name";
+
+      let valueAxis = Radar_Chart.yAxes.push(new am4charts.ValueAxis());
+      valueAxis.renderer.axisFills.template.fill = Radar_Chart.colors.getIndex(2);
+      valueAxis.renderer.axisFills.template.fillOpacity = 0.05;
+
+      let series = Radar_Chart.series.push(new am4charts.RadarSeries());
+      series.dataFields.valueY = metrics;
+      series.dataFields.categoryX = "region_name";
+      series.name = metricsTranslations[metrics];
+      series.strokeWidth = 3;
+        
+      Radar_Chart.legend = new am4charts.Legend();
+        
+      Radar_Chart.exporting.menu = new am4core.ExportMenu();
     }
 
     function chartsInit(){
       am4core.useTheme(am4themes_animated);
       window.xyChart = am4core.create('dynamic', am4charts.XYChart)
       window.pieChart = am4core.create('piechart', am4charts.PieChart)
+      window.Radar_Chart = am4core.create("radarchart", am4charts.RadarChart);
     }
-    
+      
   </script>
   <script type="text/javascript" src="../js/charts_common.js"></script>
 </body>

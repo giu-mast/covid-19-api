@@ -82,6 +82,36 @@
         </select>
       </div>
     </div>
+      <div class="form-row my-2">
+    <div class="col d-flex align-items-center">
+      <label for="regions">
+        Metriche
+      </label>
+    </div>
+    <div class="col">
+      <div class="form-field">
+        <label for="deceduti">
+          Deceduti
+          <input id="deceduti" type="checkbox" name="metrics[]" value="total_deaths" />
+        </label>
+
+        <label for="totale_casi">
+          Totale casi
+          <input class="totale_casi" type="checkbox" name="metrics[]" value="total_cases" checked="checked"/>
+        </label>
+
+        <label for="dimessi_guariti">
+          Dimessi guariti
+          <input id="dimessi_guariti" type="checkbox" name="metrics[]" value="released_cured" />
+        </label>
+
+        <label for="tamponi">
+          Tamponi
+          <input id="tamponi" type="checkbox" name="metrics[]" value="swabs" />
+        </label>
+      </div>
+    </div>
+  </div>
   </div>
 
   <div class="form-row my-2 divs districts" style="display:none">
@@ -203,9 +233,7 @@
         </select>
       </div>
     </div>
-  </div>
-
-  <div class="form-row my-2">
+      <div class="form-row my-2">
     <div class="col d-flex align-items-center">
       <label for="regions">
         Metriche
@@ -213,27 +241,13 @@
     </div>
     <div class="col">
       <div class="form-field">
-        <label for="deceduti">
-          Deceduti
-          <input id="deceduti" type="checkbox" name="metrics[]" value="total_deaths" />
-        </label>
-
         <label for="totale_casi">
           Totale casi
-          <input id="totale_casi" type="checkbox" name="metrics[]" value="total_cases" />
-        </label>
-
-        <label for="dimessi_guariti">
-          Dimessi guariti
-          <input id="dimessi_guariti" type="checkbox" name="metrics[]" value="released_cured" />
-        </label>
-
-        <label for="tamponi">
-          Tamponi
-          <input id="tamponi" type="checkbox" name="metrics[]" value="swabs" />
+          <input class="totale_casi" type="radio" name="metrics[]" value="total_cases" checked="checked"/>
         </label>
       </div>
     </div>
+  </div>
   </div>
 
   <div class="form-row my-2">
