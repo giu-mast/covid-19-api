@@ -1,140 +1,2 @@
-[endpoint->regions] [date->2020-06-07 14:20:52] [client_IP->127.0.0.1] [Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422][endpoint->regions] [date->2020-06-07 14:22:00] [client_IP->127.0.0.1] [Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422][endpoint->regions] [date->2020-06-07 14:22:05] [client_IP->127.0.0.1] [Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422][endpoint->regions] [date->2020-06-07 14:22:40] [client_IP->127.0.0.1] [Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422][endpoint->regions] [date->2020-06-07 14:22:40] [client_IP->127.0.0.1] [Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422][endpoint->regions] [date->2020-06-07 14:22:41] [client_IP->127.0.0.1] [Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422][endpoint->regions] [date->2020-06-07 14:22:42] [client_IP->127.0.0.1] [Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422][endpoint->regions] [date->2020-06-07 14:23:42] [client_IP->127.0.0.1] [Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422][endpoint->regions] [date->2020-06-07 14:23:48] [client_IP->127.0.0.1] [Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422][endpoint->regions] [date->2020-06-07 14:24:52] [client_IP->127.0.0.1] [Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422][endpoint->regions] [date->2020-06-07 14:26:34] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422][endpoint->regions] [date->2020-06-07 14:26:35] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422][endpoint->regions] [date->2020-06-07 14:26:36] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422][endpoint->regions] [date->2020-06-07 14:26:36] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422][endpoint->regions] [date->2020-06-07 14:26:53] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
 
-[endpoint->regions] [date->2020-06-07 14:26:53] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:26:53] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:27:31] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:27:32] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:27:38] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:27:39] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:27:45] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:27:53] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:28:51] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:28:52] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:28:54] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:29:02] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:29:03] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:29:03] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:29:12] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:29:23] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:29:29] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:29:35] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:29:44] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:29:59] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:30:02] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:30:14] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:30:14] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:30:34] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:30:35] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:30:40] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:30:49] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:30:58] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:31:05] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:31:44] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:31:45] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:31:51] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:31:57] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:31:57] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:31:59] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:32:16] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:32:23] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:32:30] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:32:36] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:33:00] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:33:11] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:33:20] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:33:35] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-[endpoint->regions] [date->2020-06-07 14:34:03] [client_IP->127.0.0.1]
-[Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]
-
-
+[endpoint->districts] [date->2020-06-09 15:17:55] [client_IP->127.0.0.1] [Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422][endpoint->districts] [date->2020-06-09 15:18:24] [client_IP->127.0.0.1] [Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422][endpoint->districts] [date->2020-06-09 15:19:34] [client_IP->127.0.0.1] [Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422][endpoint->districts] [date->2020-06-09 15:20:16] [client_IP->127.0.0.1] [Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422][endpoint->districts] [date->2020-06-09 15:20:33] [client_IP->127.0.0.1] [Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422][endpoint->districts] [date->2020-06-09 15:21:42] [client_IP->127.0.0.1] [Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422][endpoint->districts] [date->2020-06-09 15:21:58] [client_IP->127.0.0.1] [Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422][endpoint->districts] [date->2020-06-09 15:22:15] [client_IP->127.0.0.1] [Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422][endpoint->districts] [date->2020-06-09 15:22:19] [client_IP->127.0.0.1] [Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422][endpoint->districts] [date->2020-06-09 15:22:23] [client_IP->127.0.0.1] [Client_Error->Server unable to process the request, some values are not valid] [Status_Code->422]

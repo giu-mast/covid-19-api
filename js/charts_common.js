@@ -16,7 +16,7 @@ let fetchedData,
       'total_cases': 'Casi totali',
       'swabs': 'Tamponi',
       'testes_cases': 'Casti testati'
-    };
+    }
 
 /* 
   Popolo un oggetto "regions" utile per le traduzioni. Alla fine avrò un oggetto così:
@@ -81,6 +81,7 @@ function buildUrl(endpoint, obj){
 /* Event Handler alla submit del form */
 const form = document.querySelector('#filters_histogram'),
       pieForm = document.querySelector('#filters_pie');
+
 form.addEventListener('submit', function(e){
   e.preventDefault();
   let sel         = form.querySelector('select'),
@@ -92,7 +93,7 @@ form.addEventListener('submit', function(e){
       metrics     = [...form.elements["metrics[]"]].filter(d=>d.checked).map(d=>d.value) ,
       url         = buildUrl(apiType, {
         region_code: regions, 
-        district_code: districts, 
+        district_name: districts, 
         start_date: startDate,
         end_date: endDate
       })
@@ -134,8 +135,7 @@ form.addEventListener('submit', function(e){
 
     /* inserisco nella variabile globale fetchedData i risultati della chiamata ad API */
     fetchedData = data
-    
-    
+
     /* 
       Qui chiamo la funzione globale draw() che è presente in amcharts.php
       Qui cioè vado a resettare il grafico presente e a creare le nuove series
@@ -146,21 +146,76 @@ form.addEventListener('submit', function(e){
   })
   .catch(function(e){
     console.log(e)
-    alert("Error during regions data fetch")
+    alert("Error during data fetch")
+  })
+  return false;
+})
+
+  pieForm.addEventListener('submit', function(e){
+  e.preventDefault()
+      let sel     = pieForm.querySelector('select'),
+      apiType     = sel.options[sel.selectedIndex].value,
+      SelectedDay = pieForm.querySelector('[name=start_date]').value,
+      regions     = [...pieForm.querySelector('[name=regions]')].map(d=>parseInt(d.value)),
+      districts   = [...pieForm.querySelector('[name=districts]')].map(d=>d.value),
+      metric      = pieForm.querySelector("[name=metric]:checked").value,
+        url         = buildUrl(apiType, {
+        region_code: regions, 
+        district_name: districts, 
+        start_date: SelectedDay,
+        single: true
+      })
+      
+  console.log(url)
+      
+  fetch(url)
+  .then(function(response){
+    return response.json()
+  })
+  .then(function(data){
+    data.forEach((d)=>{
+      /* Monkeypatch: converto alcuni valori in numeri, dalle API mi arrivano come stringa */
+      Object.keys(d).forEach((k)=>{
+        switch(k){
+          case 'latitude':
+          case 'longitude':
+            d[k] = parseFloat(d[k])
+            break;
+          case 'region_code':
+          case 'intensive_care':
+          case 'total_hospitalized':
+          case 'hospitalized_with_symptoms':
+          case 'home_isolation':
+          case 'total_positives':
+          case 'total_variation_positives':
+          case 'new_positives':
+          case 'released_cured':
+          case 'total_deaths':
+          case 'total_cases':
+          case 'swabs':
+          case 'testes_cases':
+            d[k] = parseInt(d[k])
+            break;
+        }
+      })
+    })
+
+    /* inserisco nella variabile globale fetchedData i risultati della chiamata ad API */
+    fetchedData = data
+    
+    /* 
+      Qui chiamo la funzione globale draw() che è presente in amcharts.php
+      Qui cioè vado a resettare il grafico presente e a creare le nuove series
+      VAI A VEDERE LA FUNZIONE DRAW() presente in amcharts.php
+
+     */
+    drawPie(apiType === 'regions' ? regions : districts, metric);
+  })
+  .catch(function(e){
+    console.log(e)
+    alert("Error during data fetch")
   })
   return false;
 })
 
 
-pieForm.addEventListener('submit', function(e){
-  e.preventDefault()
-  console.log('1 - PRENDO I VALORI DEI CAMPI SELEZIONATI')
-  console.log('2 - COSTRUISCO L\'URL')
-  console.log('3 - FACCIO LA RICHIESTA TRAMITE UNA fetch')
-  console.log('4 - fetchedData = data ---> MOLTO IMPORTANTE')
-  console.log('5 - chiamare drawPie()')
-
-  
-  drawPie();
-  return false;
-});

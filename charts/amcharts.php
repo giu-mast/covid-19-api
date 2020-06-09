@@ -20,12 +20,6 @@
     <div class="row">
       <div class="col-md-8 offset-md-2">
         <h1>Grafici interattivi</h1>
-        <p>
-          Da leggere assolutamente:
-          <a href="https://www.amcharts.com/docs/v4/concepts/data/" target="_blank">
-            AMCharts v.4 - Data
-          </a>
-        </p>
       </div>
     </div>
 
@@ -141,6 +135,7 @@
               case 'released_cured':
               case 'swabs':
               case 'region_code':
+              case 'district_name':
               case 'intensive_care':
               case 'total_hospitalized':
               case 'hospitalized_with_symptoms':
@@ -195,13 +190,38 @@
           }
         })
       });
+        
+      xyChart.exporting.menu = new am4core.ExportMenu();
     }
 
 
-    function drawPie(){
-      console.log("1 - Dispose del grafico precedente")
-      console.log("2 - Crea un nuovo grafico vuoto")
-      console.log("3 - Aggiungi una series al grafico vuoto")
+    function drawPie(data, metrics){
+        
+      //debugger
+      
+      pieChart.dispose();
+        
+      pieChart = am4core.create('piechart', am4charts.PieChart);
+        
+      let dataset = fetchedData;
+      console.log(fetchedData)
+        
+      pieChart.data = dataset;
+        
+      pieChart.innerRadius = am4core.percent(50);
+        
+      let pieSeries = pieChart.series.push(new am4charts.PieSeries());
+        pieSeries.dataFields.value = metrics;
+        pieSeries.dataFields.category = "region_name";
+        pieSeries.slices.template.stroke = am4core.color("#fff");
+        pieSeries.slices.template.strokeWidth = 2;
+        pieSeries.slices.template.strokeOpacity = 1;
+        pieSeries.hiddenState.properties.opacity = 1;
+        pieSeries.hiddenState.properties.endAngle = -90;
+        pieSeries.hiddenState.properties.startAngle = -90;
+        pieChart.legend = new am4charts.Legend();
+        
+        pieChart.exporting.menu = new am4core.ExportMenu();
     }
 
     function chartsInit(){
