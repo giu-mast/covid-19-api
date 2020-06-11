@@ -243,7 +243,7 @@
       <div class="form-field">
         <label for="totale_casi">
           Totale casi
-          <input class="totale_casi" type="radio" name="metrics[]" value="total_cases" checked="checked"/>
+          <input class="totale_casi" type="radio" name="metric" value="total_cases" checked="checked"/>
         </label>
       </div>
     </div>

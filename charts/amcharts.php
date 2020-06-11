@@ -99,7 +99,7 @@
 
     /* 1. VAI A VEDERE IN charts_common COSA SUCCEDE DURANTE L'INIZIALIZZAZIONE */
 
-    function draw(data, metrics){
+    function draw(data, metrics, translations, api){
 
       /* 
         in data se ho selezionato le regioni:
@@ -164,27 +164,28 @@
               case 'released_cured':
               case 'swabs':
               case 'testes_cases':
-                console.log(`ColumnSeries in ${regions[region]} for metric -> ${metric}`)
+                console.log(`ColumnSeries in ${translations[region]} for metric -> ${metric}`)
                 var columnSeries = xyChart.series.push( new am4charts.ColumnSeries() );  
 
                 /* Qui setto quale metrica (es. "released_cured", "swabs") deve vedere la series per l'asse Y*/
                 columnSeries.dataFields.valueY = metric
                 /* Qui setto quale metrica (il campo "date") deve vedere la series per l'asse X */
                 columnSeries.dataFields.dateX = 'date'
-                columnSeries.columns.template.tooltipText = `${metricsTranslations[metric]} in ${regions[region]} il {dateX}: {valueY}`;
+                columnSeries.columns.template.tooltipText = `${metricsTranslations[metric]} in ${translations[region]} il {dateX}: {valueY}`;
 
                 /* Assegno i dati filtrati per regione alla series */
                 var d = dataset.filter(function(o){
-                  return parseInt(o.region_code) === region
+                  let v = api === 'regions' ? parseInt(o.region_code) : o.province_abbreviation
+                  return v === region
                 });
                 columnSeries.data = d
               break;
             break;
             case 'total_deaths':
             case 'total_cases':
-              console.log(`LineSeries in ${regions[region]} for metric -> ${metric}`)
+              console.log(`LineSeries in ${translations[region]} for metric -> ${metric}`)
               var lineSeries = xyChart.series.push( new am4charts.LineSeries() );
-              lineSeries.tooltipText = `${metricsTranslations[metric]} in ${regions[region]} il {dateX}: {valueY}`;
+              lineSeries.tooltipText = `${metricsTranslations[metric]} in ${translations[region]} il {dateX}: {valueY}`;
               lineSeries.strokeWidth = 2
               /* Qui setto quale metrica (es. "released_cured", "swabs") deve vedere la series per l'asse Y*/
               lineSeries.dataFields.valueY = metric
@@ -197,23 +198,27 @@
               var circle = bullet.createChild(am4core.Circle);
               circle.width = 8;
               circle.height = 8;
-              circle.tooltipText = `${metricsTranslations[metric]} in ${regions[region]} il {dateX}: {valueY}`;
+              circle.tooltipText = `${metricsTranslations[metric]} in ${translations[region]} il {dateX}: {valueY}`;
               
+              lineSeries.legendSettings.labelText = `${translations[region]}`;
+
               /* Assegno i dati filtrati per regione alla series */
               var d = dataset.filter(function(o){
-                return parseInt(o.region_code) === region
+                let v = api === 'regions' ? parseInt(o.region_code) : o.province_abbreviation
+                return v === region
               })
               lineSeries.data = d;
             break;
           }
         })
       });
-        
+
+      xyChart.legend = new am4charts.Legend();
       xyChart.exporting.menu = new am4core.ExportMenu();
     }
 
 
-    function drawPie(data, metrics){
+    function drawPie(data, metrics, translations, api){
         
       //debugger
       
@@ -230,20 +235,21 @@
         
       let pieSeries = pieChart.series.push(new am4charts.PieSeries());
         pieSeries.dataFields.value = metrics;
-        pieSeries.dataFields.category = "region_name";
+        pieSeries.dataFields.category = api === "regions" ? "region_name" : "province_denomination";
         pieSeries.slices.template.stroke = am4core.color("#fff");
         pieSeries.slices.template.strokeWidth = 2;
         pieSeries.slices.template.strokeOpacity = 1;
         pieSeries.hiddenState.properties.opacity = 1;
         pieSeries.hiddenState.properties.endAngle = -90;
         pieSeries.hiddenState.properties.startAngle = -90;
+
         pieChart.legend = new am4charts.Legend();
         
         pieChart.exporting.menu = new am4core.ExportMenu();
         console.log(data)
     }
     
-    function drawRadar(data, metrics){
+    function drawRadar(data, metrics, translations, api){
               
       Radar_Chart.dispose();
     
@@ -255,7 +261,7 @@
       Radar_Chart.data = dataset;
         
       let categoryAxis = Radar_Chart.xAxes.push(new am4charts.CategoryAxis());
-      categoryAxis.dataFields.category = "region_name";
+      categoryAxis.dataFields.category = api === "regions" ? "region_name" : "province_denomination";;
 
       let valueAxis = Radar_Chart.yAxes.push(new am4charts.ValueAxis());
       valueAxis.renderer.axisFills.template.fill = Radar_Chart.colors.getIndex(2);
@@ -263,7 +269,7 @@
 
       let series = Radar_Chart.series.push(new am4charts.RadarSeries());
       series.dataFields.valueY = metrics;
-      series.dataFields.categoryX = "region_name";
+      series.dataFields.categoryX = api === "regions" ? "region_name" : "province_denomination";;;
       series.name = metricsTranslations[metrics];
       series.strokeWidth = 3;
         

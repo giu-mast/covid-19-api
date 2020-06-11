@@ -70,7 +70,6 @@ function buildUrl(endpoint, obj){
 
   if(endpoint === 'regions'){ delete obj.district_code }
   if(endpoint === 'districts'){ delete obj.region_code }
-
   if(!obj.end_date){
     delete obj.end_date
   }
@@ -84,16 +83,16 @@ const form = document.querySelector('#filters_histogram'),
 
 form.addEventListener('submit', function(e){
   e.preventDefault();
-  let sel         = form.querySelector('select'),
-      apiType     = sel.options[sel.selectedIndex].value,
-      startDate   = form.querySelector('[name=start_date]').value,
-      endDate     = form.querySelector('[name=end_date]').value, 
-      regions     = [...form.querySelector('[name=regions]')].map(d=>parseInt(d.value)),
-      districts   = [...form.querySelector('[name=districts]')].map(d=>d.value),
-      metrics     = [...form.elements["metrics[]"]].filter(d=>d.checked).map(d=>d.value) ,
-      url         = buildUrl(apiType, {
-        region_code: regions, 
-        district_name: districts, 
+  let sel           = form.querySelector('select'),
+      apiType       = sel.options[sel.selectedIndex].value,
+      startDate     = form.querySelector('[name=start_date]').value,
+      endDate       = form.querySelector('[name=end_date]').value, 
+      selRegions    = [...form.querySelector('[name=regions]')].map(d=>parseInt(d.value)),
+      selDistricts  = [...form.querySelector('[name=districts]')].map(d=>d.value),
+      metrics       = apiType === 'regions' ? [...form.elements["metrics[]"]].filter(d=>d.checked).map(d=>d.value) : [form.querySelector("[name=metric]:checked").value],
+      url           = buildUrl(apiType, {
+        region_code: selRegions, 
+        district_name: selDistricts, 
         start_date: startDate,
         end_date: endDate
       })
@@ -142,7 +141,12 @@ form.addEventListener('submit', function(e){
       VAI A VEDERE LA FUNZIONE DRAW() presente in amcharts.php
 
      */
-    draw(apiType === 'regions' ? regions : districts, metrics);
+    draw(
+      apiType === 'regions' ? selRegions : selDistricts, 
+      metrics, 
+      apiType === 'regions' ? regions : districts,
+      apiType
+    );
   })
   .catch(function(e){
     console.log(e)
@@ -156,12 +160,12 @@ form.addEventListener('submit', function(e){
       let sel     = pieForm.querySelector('select'),
       apiType     = sel.options[sel.selectedIndex].value,
       SelectedDay = pieForm.querySelector('[name=start_date]').value,
-      regions     = [...pieForm.querySelector('[name=regions]')].map(d=>parseInt(d.value)),
-      districts   = [...pieForm.querySelector('[name=districts]')].map(d=>d.value),
+      selRegions     = [...pieForm.querySelector('[name=regions]')].map(d=>parseInt(d.value)),
+      selDistricts   = [...pieForm.querySelector('[name=districts]')].map(d=>d.value),
       metric      = pieForm.querySelector("[name=metric]:checked").value,
         url         = buildUrl(apiType, {
-        region_code: regions, 
-        district_name: districts, 
+        region_code: selRegions, 
+        district_name: selDistricts, 
         start_date: SelectedDay,
         single: true
       })
@@ -209,8 +213,19 @@ form.addEventListener('submit', function(e){
       VAI A VEDERE LA FUNZIONE DRAW() presente in amcharts.php
 
      */
-    drawPie(apiType === 'regions' ? regions : districts, metric);
-    drawRadar(apiType === 'regions' ? regions : districts, metric);
+    drawPie(
+      apiType === 'regions' ? selRegions : districts, 
+      metric,
+      apiType === 'regions' ? regions : districts,
+      apiType
+    );
+    
+    drawRadar(
+      apiType === 'regions' ? selDistricts : districts, 
+      metric,
+      apiType === 'regions' ? regions : districts,
+      apiType
+    );
   })
   .catch(function(e){
     console.log(e)
