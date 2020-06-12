@@ -93,6 +93,36 @@
           Tamponi
           <input id="tamponi_pie" type="radio" name="metric" value="swabs" />
         </label>
+
+        <label for="hospitalized_with_symptoms_pie">
+          Ospedalizzati con sintomi
+          <input id="hospitalized_with_symptoms_pie" type="radio" name="metric" value="hospitalized_with_symptoms" />
+        </label>
+
+        <label for="intensive_care_pie">
+          Terapia intensiva
+          <input id="intensive_care_pie" type="radio" name="metric" value="intensive_care" />
+        </label>
+
+        <label for="new_positives_pie">
+          Nuovi positivi
+          <input id="new_positives_pie" type="radio" name="metric" value="new_positives" />
+        </label>
+
+        <label for="total_hospitalized_pie">
+          Totale ospedalizzati
+          <input id="total_hospitalized_pie" type="radio" name="metric" value="total_hospitalized" />
+        </label>
+
+        <label for="total_positives_pie">
+          Totale positivi
+          <input id="total_positives_pie" type="radio" name="metric" value="total_positives" />
+        </label>
+
+        <label for="total_variation_positives_pie">
+          Variazione totale positivi
+          <input id="total_variation_positives_pie" type="radio" name="metric" value="total_variation_positives" />
+        </label>
       </div>
     </div>
   </div>

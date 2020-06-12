@@ -173,6 +173,8 @@
                 columnSeries.dataFields.dateX = 'date'
                 columnSeries.columns.template.tooltipText = `${metricsTranslations[metric]} in ${translations[region]} il {dateX}: {valueY}`;
 
+                columnSeries.legendSettings.labelText = `${metricsTranslations[metric]} in ${translations[region]}`;
+
                 /* Assegno i dati filtrati per regione alla series */
                 var d = dataset.filter(function(o){
                   let v = api === 'regions' ? parseInt(o.region_code) : o.province_abbreviation
@@ -200,7 +202,7 @@
               circle.height = 8;
               circle.tooltipText = `${metricsTranslations[metric]} in ${translations[region]} il {dateX}: {valueY}`;
               
-              lineSeries.legendSettings.labelText = `${translations[region]}`;
+              lineSeries.legendSettings.labelText = `${metricsTranslations[metric]} in ${translations[region]}`;
 
               /* Assegno i dati filtrati per regione alla series */
               var d = dataset.filter(function(o){

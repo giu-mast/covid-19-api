@@ -109,6 +109,36 @@
           Tamponi
           <input id="tamponi" type="checkbox" name="metrics[]" value="swabs" />
         </label>
+
+        <label for="hospitalized_with_symptoms">
+          Ospedalizzati con sintomi
+          <input id="hospitalized_with_symptoms" type="checkbox" name="metrics[]" value="hospitalized_with_symptoms" />
+        </label>
+
+        <label for="intensive_care">
+          Terapia intensiva
+          <input id="intensive_care" type="checkbox" name="metrics[]" value="intensive_care" />
+        </label>
+
+        <label for="new_positives">
+          Nuovi positivi
+          <input id="new_positives" type="checkbox" name="metrics[]" value="new_positives" />
+        </label>
+
+        <label for="total_hospitalized">
+          Totale ospedalizzati
+          <input id="total_hospitalized" type="checkbox" name="metrics[]" value="total_hospitalized" />
+        </label>
+
+        <label for="total_positives">
+          Totale positivi
+          <input id="total_positives" type="checkbox" name="metrics[]" value="total_positives" />
+        </label>
+
+        <label for="total_variation_positives">
+          Variazione totale positivi
+          <input id="total_variation_positives" type="checkbox" name="metrics[]" value="total_variation_positives" />
+        </label>
       </div>
     </div>
   </div>
