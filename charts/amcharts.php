@@ -289,5 +289,13 @@
       
   </script>
   <script type="text/javascript" src="../js/charts_common.js"></script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-45397647-14');
+  </script>
 </body>
 </html>
