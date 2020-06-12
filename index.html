@@ -49,7 +49,7 @@
 		<div class="container-fluid" id="ContainerTitle_Center">
 			<div class="row-1">
 	    		<div class="col-sm-7" id="ContainerTitle_Titolo">Visualizzazione dei dati COVID-19</div>
-	    		<div class="col-sm-9" id="ContainerTitle_Sottotitolo">COVID-JSON-19 è una API JSON gratuita che mette a disposizione i dati del contagio da Sars-COVID-19 in Italia. In questo sito potrete visualizzare anche grafici interattivi sul contagio da COVID-19 su tutto il territorio italiano. Potrete trovare vari indicatori per i parametri visualizzatili e le date relative ai dati.</div>
+	    		<div class="col-sm-9" id="ContainerTitle_Sottotitolo">COVID-JSON-19 è una API JSON gratuita che mette a disposizione i dati del contagio da Sars-COVID-19 in Italia. In questo sito potrete visualizzare anche grafici interattivi sul contagio da COVID-19 su tutto il territorio italiano. Potrete trovare vari indicatori per i parametri visualizzati e le date relative ai dati.</div>
 	  		</div>
   		</div>
 	</div>
@@ -65,12 +65,14 @@
     			<div class="col-sm-8" id="Descrizione_Center">L’api restituisce tutti i dati disponibili per regione dal 24/02/2020 alla data odierna.</div>
     			<div class="col" id="Sottotitolo_Center">Parametri</div>
     			<div class="col-sm-8" id="Descrizione_Center">
-    				all: se è settato a true ci restituisce tutti i dati in formato json <br>
+    				all: se è settato a true ci restituisce tutti i dati delle regioni disponibili. <br>
     				single: se è settato a true ci restituisce i dati di una sola data, la data specificata nello start date <br> 
     				start_date: restituisce i dati a partire dalla data specificata (formato YYYY-MM-DD)<br>
 					end_date: restituisce i dati fino alla data specificata (formato YYYY-MM-DD)<br>
 					region_code: codice ISTAT della regione<br>
-					region_name: denominazione della regione (n.b. ha precedenza su region_code)</div>
+					region_name: denominazione della regione (n.b. ha precedenza su region_code)<br>
+                    Se omessi start_date e end_date si setteranno automaticamente alla data più recente, inoltre è possibile specificare in region_code e region_name più di un valore, ogni valore però dev'essere separato da virgola.
+                </div>
 				<div class="col" id="Sottotitolo_Center">Esempio di utilizzo</div>
 
 				<div class="col" id="Link_Tab"> 
@@ -79,7 +81,7 @@
 		    			<img id="ImgButton" src="img/logoCopy.png">
 					</button>
 
-					<div class="col" id="Link_Tot">GET <a class="nav-link" target="_blank" href="http://covid-json.dev/api/regions?start_date=2020-04-04&end_date=2020-04-04&region_code=16" id="LINKRegions"> http://covid-json.dev/api/regions?start_date=2020-04-04&ampend_date=2020-04-04&ampregion_code=16 </a></div>					
+					<div class="col" id="Link_Tot">GET <a class="nav-link" target="_blank" href="http://www.covid19api.it/regions?start_date=2020-04-04&end_date=2020-04-04&region_code=16" id="LINKRegions"> http://www.covid19api.it/regions?start_date=2020-04-04&ampend_date=2020-04-04&ampregion_code=16 </a></div>					
 				</div>
 
 
@@ -118,12 +120,13 @@
     			<div class="col-sm-8" id="Descrizione_Center">L’api restituisce tutti i dati disponibili per provincia dal 24/02/2020 alla data odierna.</div>
     			<div class="col" id="Sottotitolo_Center">Parametri</div>
     			<div class="col-sm-8" id="Descrizione_Center">
-    				all: se è settato a true ci restituisce tutti i dati in formato json <br>
+    				all: se è settato a true ci restituisce tutti i dati delle province disponibili. <br>
     				single: se è settato a true ci restituisce i dati di una sola data, la data specificata nello start date <br> 
     				start_date: restituisce i dati a partire dalla data specificata (formato YYYY-MM-DD)<br>
 					end_date: restituisce i dati fino alla data specificata (formato YYYY-MM-DD)<br>
 					district_code: codice ISTAT delle province<br>
 					district_name: nome abbreviato della provincia</div>
+                    Qui start_date, end_date, district_code e district_name hanno lo stesso comportamento che hanno nell'endpoint delle regioni.
 				<div class="col" id="Sottotitolo_Center">Esempio di utilizzo</div>
 
 				<div class="col" id="Link_Tab"> 
@@ -132,7 +135,7 @@
 		    			<img id="ImgButton" src="img/logoCopy.png">
 					</button>
 
-					<div class="col" id="Link_Tot">GET <a class="nav-link" target="_blank" href="http://covid-json.dev/api/districts?start_date=2020-04-04&end_date=2020-04-04&district_code=071" id="LINKDistricts"> http://covid-json.dev/api/districts?start_date=2020-04-04&ampend_date=2020-04-04&ampdistrict_code=071 </a></div>					
+					<div class="col" id="Link_Tot">GET <a class="nav-link" target="_blank" href="http://www.covid19api.it/districts?start_date=2020-04-04&end_date=2020-04-04&district_code=071" id="LINKDistricts"> http://www.covid19api.it/districts?start_date=2020-04-04&ampend_date=2020-04-04&ampdistrict_code=071 </a></div>					
 				</div>
 
 
@@ -159,9 +162,10 @@
 			<div class="row-1">
     			<div class="col" id="Titolo_Center"> Friendly URLS </div>
     			<div class="col-sm-8" id="Descrizione_Center">
-    				Si può utilizzare una forma human-friendly per entrambi gli endpoint.<br>
-					Per l’endpoint delle regioni sarà possibile specificare nella forma friendly il nome della regione oppure il suo codice istat.<br>
-					Ad es. sono entrambi validi questi endpoint:
+    				Si può utilizzare una forma più human-friendly per entrambi gli endpoint.<br>
+					Per l'endpoint delle regioni sarà possibile utilizzare anche la forma friendly per avere i dati di una sola regione, attraverso il nome o il codice ISTAT.<br>
+                    Invece per l'endpoint delle province si potrà specificare solo la sigla.<br>
+					Ad es. sono validi questi endpoint:
     			</div>
 
 				<div class="col" id="Link_Tab"> 
@@ -173,10 +177,17 @@
 		    			<div id="TestoButton">Copy code two</div>
 		    			<img id="ImgButton" src="img/logoCopy.png">
 					</button>
+                    <button id="button" onclick="CopyToClipboard('LINKFriendly3')">    
+		    			<div id="TestoButton">Copy code three</div>
+		    			<img id="ImgButton" src="img/logoCopy.png">
+					</button>
 
-					<div class="col" id="Link_Tot">GET <a class="nav-link" target="_blank" href="http://covid-json.dev/api/regions/puglia" id="LINKFriendly1"> http://covid-json.dev/api/regions/puglia </a></div>	
+					<div class="col" id="Link_Tot">GET <a class="nav-link" target="_blank" href="http://www.covid19api.it/regions/puglia?start_date=2020-04-04&single=true" id="LINKFriendly1"> http://www.covid19api.it/regions/puglia?start_date=2020-04-04&ampsingle=true </a></div>	
 
-					<div class="col" id="Link_Tot">GET <a class="nav-link" target="_blank" href="http://covid-json.dev/api/regions/16" id="LINKFriendly2"> http://covid-json.dev/api/regions/16 </a></div>					
+					<div class="col" id="Link_Tot">GET <a class="nav-link" target="_blank" href="http://www.covid19api.it/regions/16?start_date=2020-04-04&single=true" id="LINKFriendly2"> http://www.covid19api.it/districts/16?start_date=2020-04-04&ampsingle=true </a></div>	
+                    
+                    <div class="col" id="Link_Tot">GET <a class="nav-link" target="_blank" href="http://www.covid19api.it/districts/FG?start_date=2020-04-04&single=true" id="LINKFriendly3"> http://www.covid19api.it/districts/FG?start_date=2020-04-04&ampsingle=true </a></div>	
+                    
   				</div>
 			</div>
 		</div>

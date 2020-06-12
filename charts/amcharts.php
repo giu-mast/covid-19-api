@@ -217,6 +217,13 @@
 
       xyChart.legend = new am4charts.Legend();
       xyChart.exporting.menu = new am4core.ExportMenu();
+        
+      xyChart.cursor = new am4charts.XYCursor();
+        
+      xyChart.zoomOutButton.align = "left";
+      xyChart.zoomOutButton.valign = "bottom";
+      xyChart.zoomOutButton.marginLeft = 10;
+      xyChart.zoomOutButton.marginBottom = 10;
     }
 
 
