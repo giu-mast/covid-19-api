@@ -11,7 +11,7 @@
   <style type="text/css">
     .chart{
       background: #eee;
-      min-height: 400px; 
+      min-height: 500px; 
     }
     .form-row.my-2.divs.regions{
       display:block;   
