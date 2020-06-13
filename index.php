@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		<link rel="stylesheet" href="css/bootsrap css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootsrap-css/bootstrap.min.css">
 		<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 
 	<link rel="shortcut icon" href="img/icona.ico" />
@@ -26,29 +26,13 @@
 
 <body>
 
-
-	<nav class="navbar navbar-expand-sm navbar-light" id="Menu">
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="	navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-		    <span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-		    <div class="navbar-nav">
-		      <a class="nav-item nav-link" id="NavbarHome" href="#">Home</a>
-		      <a class="nav-item nav-link" id="NavbarShowcase" href="/grafici">Showcase</a>
-		    </div>
-		</div>
-	</nav>
-
-
-
-<hr id="PrimoHr">
-
+	<?php require($_SERVER["DOCUMENT_ROOT"].'/header.php'); ?>
 
 
 	<div class="container-fluid" id="ContainerTitle">
 		<div class="container-fluid" id="ContainerTitle_Center">
 			<div class="row-1">
-	    		<div class="col-sm-7" id="ContainerTitle_Titolo">Visualizzazione dei dati COVID-19</div>
+	    		<div class="col-sm-7" id="ContainerTitle_Titolo"><h1>Visualizzazione dei dati COVID-19</h1></div>
 	    		<div class="col-sm-9" id="ContainerTitle_Sottotitolo">COVID-JSON-19 è una API JSON gratuita che mette a disposizione i dati del contagio da Sars-COVID-19 in Italia. In questo sito potrete visualizzare anche grafici interattivi sul contagio da COVID-19 su tutto il territorio italiano. Potrete trovare vari indicatori per i parametri visualizzati e le date relative ai dati.</div>
 	  		</div>
   		</div>
@@ -60,20 +44,21 @@
 
 		<div class="container" id="ContainerRegions">
 			<div class="row-1">
-    			<div class="col" id="Titolo_Center"> Regions </div>
-    			<div class="col" id="Sottotitolo_Center">Descrizione</div>
-    			<div class="col-sm-8" id="Descrizione_Center">L’api restituisce tutti i dati disponibili per regione dal 24/02/2020 alla data odierna.</div>
-    			<div class="col" id="Sottotitolo_Center">Parametri</div>
-    			<div class="col-sm-8" id="Descrizione_Center">
-    				all: se settato a true ci restituisce tutti i dati delle regioni disponibili. <br>
+    			<div class="col Titolo_Center"> Regions </div>
+    			<div class="col Sottotitolo_Center">Descrizione</div>
+    			<div class="col-md-8" id="Descrizione_Center">L’api restituisce tutti i dati disponibili per regione dal 24/02/2020 alla data odierna.</div>
+    			<div class="col Sottotitolo_Center">Parametri</div>
+    			<div class="col-md-8" id="Descrizione_Center">
+    				<span class="docs">all</span>: se settato a true ci restituisce tutti i dati delle regioni disponibili. <br>
     				single: se settato a true ci restituisce i dati di una sola data, la data specificata nello start_date <br> 
-    				start_date: restituisce i dati a partire dalla data specificata (formato YYYY-MM-DD)<br>
-					end_date: restituisce i dati fino alla data specificata (formato YYYY-MM-DD)<br>
-					region_code: codice ISTAT della regione<br>
-					region_name: denominazione della regione (n.b. ha precedenza su region_code)<br>
-                    Se omessi start_date e end_date si setteranno automaticamente alla data più recente, inoltre è possibile specificare in region_code e region_name più di un valore, ogni valore però dev'essere separato da virgola.
+    				<span class="docs">start_date</span>: restituisce i dati a partire dalla data specificata (formato YYYY-MM-DD)<br>
+					<span class="docs">end_date</span>: restituisce i dati fino alla data specificata (formato YYYY-MM-DD)<br>
+					<span class="docs">region_code</span>: codice ISTAT della regione<br>
+					<span class="docs">region_name</span>: denominazione della regione (n.b. ha precedenza su region_code)<br>
+                    
+                    Se omessi, start_date e end_date si setteranno automaticamente alla data più recente, inoltre è possibile specificare in region_code e region_name più di un valore, ogni valore però dev'essere separato da virgola.
                 </div>
-				<div class="col" id="Sottotitolo_Center">Esempio di utilizzo</div>
+				<div class="col Sottotitolo_Center">Esempio di utilizzo</div>
 
 				<div class="col" id="Link_Tab"> 
 					<button id="button" onclick="CopyToClipboard('LINKRegions')">    
@@ -115,20 +100,20 @@
 
 		<div class="container" id="ContainerDistricts">
 			<div class="row-1">
-    			<div class="col" id="Titolo_Center"> Districts </div>
-    			<div class="col" id="Sottotitolo_Center">Descrizione</div>
-    			<div class="col-sm-8" id="Descrizione_Center">L’api restituisce tutti i dati disponibili per provincia dal 24/02/2020 alla data odierna.</div>
-    			<div class="col" id="Sottotitolo_Center">Parametri</div>
-    			<div class="col-sm-8" id="Descrizione_Center">
-    				all: se settato a true ci restituisce tutti i dati delle province disponibili. <br>
-    				single: se settato a true ci restituisce i dati di una sola data, la data specificata nello start_date <br> 
-    				start_date: restituisce i dati a partire dalla data specificata (formato YYYY-MM-DD)<br>
-					end_date: restituisce i dati fino alla data specificata (formato YYYY-MM-DD)<br>
-					district_code: codice ISTAT delle province<br>
-					district_name: nome abbreviato della provincia<br>
+    			<div class="col Titolo_Center"> Districts </div>
+    			<div class="col Sottotitolo_Center">Descrizione</div>
+    			<div class="col-md-8" id="Descrizione_Center">L’api restituisce tutti i dati disponibili per provincia dal 24/02/2020 alla data odierna.</div>
+    			<div class="col Sottotitolo_Center">Parametri</div>
+    			<div class="col-md-8" id="Descrizione_Center">
+    				<span class="docs">all</span>: se settato a true ci restituisce tutti i dati delle province disponibili. <br>
+    				<span class="docs">single</span>: se settato a true ci restituisce i dati di una sola data, la data specificata nello start_date <br> 
+    				<span class="docs">start_date</span>: restituisce i dati a partire dalla data specificata (formato YYYY-MM-DD)<br>
+					<span class="docs">end_date</span>: restituisce i dati fino alla data specificata (formato YYYY-MM-DD)<br>
+					<span class="docs">district_code</span>: codice ISTAT delle province<br>
+					<span class="docs">district_name</span>: nome abbreviato della provincia<br>
                     Qui start_date, end_date, district_code e district_name hanno lo stesso comportamento che hanno nell'endpoint delle regioni.
                     </div>
-				<div class="col" id="Sottotitolo_Center">Esempio di utilizzo</div>
+				<div class="col Sottotitolo_Center">Esempio di utilizzo</div>
 
 				<div class="col" id="Link_Tab"> 
 					<button id="button" onclick="CopyToClipboard('LINKDistricts')">    
@@ -161,8 +146,8 @@
 
 		<div class="container" id="ContainerFriendly">
 			<div class="row-1">
-    			<div class="col" id="Titolo_Center"> Friendly URLS </div>
-    			<div class="col-sm-8" id="Descrizione_Center">
+    			<div class="col Titolo_Center"> Friendly URLS </div>
+    			<div class="col-md-8" id="Descrizione_Center">
     				Si può utilizzare una forma più human-friendly per entrambi gli endpoint.<br>
 					Per l'endpoint delle regioni sarà possibile utilizzare anche la forma friendly per avere i dati di una sola regione, attraverso il nome o il codice ISTAT.<br>
                     Invece per l'endpoint delle province si potrà specificare solo la sigla.<br>
@@ -192,58 +177,10 @@
   				</div>
 			</div>
 		</div>
-</div>
-
-
-
-<hr id="SecondoHr">
-
-
-
-	<div class="container-fluid" id="ContainerCredits">
-		<div class="container-fluid" id="ContainerCredits_Center">
-			<div class="row">
-				<ul class="col-sm-3 nav flex-column" id="MenuCredits">	
-				    <div id="MenuCredits_Text">Menu</div>
-				  <li class="nav-item">
-				    <a class="nav-link" href="#" id="MenuCredits_Voci">Home</a>
-				  </li>
-				  <li class="nav-item">
-				    <a class="nav-link" href="charts/amcharts.php" id="MenuCredits_Voci">Showcase</a>
-				  </li>
-				</ul>
-
-				<div class="col-sm-9" id="CreditsName">
-					<div class="text-sm-right" id="CreditsName_Text" >Credits</div>
-					<div class="text-sm-right" id="CreditsName_Titolo">Back-end development</div>
-					<div class="text-sm-right" id="CreditsName_Sottotitolo">Tommaso Orlando, George Petroiu</div>
-					<div class="text-sm-right" id="CreditsName_Titolo">Front-end development</div>
-					<div class="text-sm-right" id="CreditsName_Sottotitolo">Roberto Basile</div>
-					<div class="text-sm-right" id="CreditsName_Titolo">Deploy</div>
-					<div class="text-sm-right" id="CreditsName_Sottotitolo">Davide Dente</div>
-					<div class="text-sm-right" id="CreditsName_Titolo">Management</div>
-					<div class="text-sm-right" id="CreditsName_Sottotitolo">Giuseppe Mastrandrea</div>
-				</div>
-			</div>
-		</div>
 	</div>
- 	  
 
-
-
-
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<script src="js/bootstrap js/bootstrap.min.js"></script> 
-				<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-45397647-14"></script>
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-
-		  gtag('config', 'UA-45397647-14');
-		</script>
-
+	<?php require($_SERVER["DOCUMENT_ROOT"].'/footer.php'); ?>
+	
 </body> 
 
 </html>

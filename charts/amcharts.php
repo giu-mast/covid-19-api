@@ -4,6 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="../img/icona.ico" />
   <title>API COVID-19</title>
+  <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
   <link rel="stylesheet" href="/charts/node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/charts/node_modules/choices.js/public/assets/styles/choices.min.css" />
 
@@ -22,15 +23,22 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 offset-md-2">
-        <h1>Grafici interattivi</h1>
+  <?php require($_SERVER["DOCUMENT_ROOT"].'/header.php'); ?>
+  
+  <div class="container-fluid" id="ContainerTitle">
+    <div class="container-fluid" id="ContainerTitle_Center">
+      <div class="row-1">
+          <div class="col-sm-7" id="ContainerTitle_Titolo">
+            <h1>Grafici Interattivi</h1>
+          </div>
+          <div class="col-sm-9" id="ContainerTitle_Sottotitolo">In questa pagina sarà possibile visualizzare dei grafici interattivi realizzati con le API fornite. Questo &egrave; solo un esempio dei grafici che è possibile visualizzare utilizzando i dati forniti.</div>
+        </div>
       </div>
-    </div>
+  </div>
 
+  <div class="container pt-5">
     <div class="row">
-      <div class="col-md-8 offset-md-2 my-5">
+      <div class="col-md-8 my-5">
         <h2>Istogramma</h2>
         <?php require('filters.php'); ?>
       </div>
@@ -45,7 +53,7 @@
 
 
     <div class="row">
-      <div class="col-md-8 offset-md-2 my-5">
+      <div class="col-md-8 my-5">
         <h2>Grafico a torta</h2>
         <?php require('filters_pie.php'); ?>
       </div>
@@ -64,10 +72,8 @@
         </div>
       </div>
     </div>
-
-
   </div>
-
+  <?php require($_SERVER["DOCUMENT_ROOT"].'/footer.php'); ?>
   <!-- LIBS AND POLYFILL -->
   <script src="/charts/node_modules/date-input-polyfill/date-input-polyfill.dist.js"></script>
   <script src="/charts/node_modules/choices.js/public/assets/scripts/choices.min.js"></script>
@@ -80,8 +86,7 @@
   <script src="//www.amcharts.com/lib/4/lang/it_IT.js"></script>
 
   <!-- TEMP COMMON OPS (init widgets, load test json, etc) -->
-  
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
   <script type="text/javascript">
     $(function() {
         $('.js-api').each(function(i,v){
@@ -297,12 +302,6 @@
   </script>
   <script type="text/javascript" src="../js/charts_common.js"></script>
 
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-45397647-14');
-  </script>
+  
 </body>
 </html>
