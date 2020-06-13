@@ -113,27 +113,42 @@ body{
 	padding-top: 1%;
     padding-bottom: 2%;
 }
-#LINKRegions{
+#LINKRegions:link,
+#LINKRegions:visited,
+#LINKRegions:hover,
+#LINKRegions:active{
 	padding: 0px;
 	color:#1AD5CE;
 	padding-left: 8px;
 }
-#LINKDistricts{
+#LINKDistricts:link,
+#LINKDistricts:visited,
+#LINKDistricts:hover,
+#LINKDistricts:active{
 	padding: 0px;
 	color:#1AD5CE;
 	padding-left: 8px;
 }
-#LINKFriendly1{
+#LINKFriendly1:link,
+#LINKFriendly1:visited,
+#LINKFriendly1:hover,
+#LINKFriendly1:active{
 	padding: 0px;
 	color:#1AD5CE;
 	padding-left: 8px;
 }
-#LINKFriendly2{
+#LINKFriendly2:link,
+#LINKFriendly2:visited,
+#LINKFriendly2:hover,
+#LINKFriendly2:active{
 	padding: 0px;
 	color:#1AD5CE;
 	padding-left: 8px;
 }
-#LINKFriendly3{
+#LINKFriendly3:link,
+#LINKFriendly3:visited,
+#LINKFriendly3:hover,
+#LINKFriendly3:active{
 	padding: 0px;
 	color:#1AD5CE;
 	padding-left: 8px;
