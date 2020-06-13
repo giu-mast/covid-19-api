@@ -68,6 +68,7 @@
     
     <div class="row">
       <div class="col-12">
+        <h2>Grafico radar</h2>
         <div id="radarchart" class="chart">
         </div>
       </div>
