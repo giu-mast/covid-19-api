@@ -165,8 +165,6 @@
               case 'hospitalized_with_symptoms':
               case 'home_isolation':
               case 'total_positives':
-              case 'total_variation_positives':
-              case 'new_positives':
               case 'released_cured':
               case 'swabs':
               case 'testes_cases':
@@ -191,6 +189,9 @@
             break;
             case 'total_deaths':
             case 'total_cases':
+            case 'total_variation_positives':
+            case 'new_positives':
+              
               console.log(`LineSeries in ${translations[region]} for metric -> ${metric}`)
               var lineSeries = xyChart.series.push( new am4charts.LineSeries() );
               lineSeries.tooltipText = `${metricsTranslations[metric]} in ${translations[region]} il {dateX}: {valueY}`;
