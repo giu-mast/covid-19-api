@@ -165,11 +165,17 @@ html body{
 	min-height: 586px;
 	color: #0E141A;
 	background-color: white;
-	font-size: 21px;
 	overflow: auto;
 	font-family: Courier New, Verdana, sans-serif;
+	font-size: 0.85em;
 }
 
+
+@media (min-width: 768px){
+	.Json{
+		font-size: 21px;
+	}
+}
 
 
 #SecondoHr{
