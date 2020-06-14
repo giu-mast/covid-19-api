@@ -70,7 +70,7 @@
 				</div>
 
 
-					<div class="col" id="Json">
+					<div class="col Json">
 						[ <br>
 							&ensp;&ensp; { <br>
 								&emsp;&emsp; “date”: “2020-05-04”, <br>
@@ -125,7 +125,7 @@
 				</div>
 
 
-					<div class="col" id="Json">
+					<div class="col Json">
 						[ <br>
 							&ensp;&ensp; { <br>
 								&emsp;&emsp; “date”: “2020-05-04”, <br>
