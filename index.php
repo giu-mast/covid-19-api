@@ -170,7 +170,7 @@
 
 					<div class="col" id="Link_Tot">GET <a class="nav-link" target="_blank" href="http://www.covid19api.it/regions/puglia?start_date=2020-04-04&single=true" id="LINKFriendly1"> http://www.covid19api.it/regions/puglia?start_date=2020-04-04&ampsingle=true </a></div>	
 
-					<div class="col" id="Link_Tot">GET <a class="nav-link" target="_blank" href="http://www.covid19api.it/regions/16?start_date=2020-04-04&single=true" id="LINKFriendly2"> http://www.covid19api.it/districts/16?start_date=2020-04-04&ampsingle=true </a></div>	
+					<div class="col" id="Link_Tot">GET <a class="nav-link" target="_blank" href="http://www.covid19api.it/regions/16?start_date=2020-04-04&single=true" id="LINKFriendly2"> http://www.covid19api.it/regions/16?start_date=2020-04-04&ampsingle=true </a></div>	
                     
                     <div class="col" id="Link_Tot">GET <a class="nav-link" target="_blank" href="http://www.covid19api.it/districts/FG?start_date=2020-04-04&single=true" id="LINKFriendly3"> http://www.covid19api.it/districts/FG?start_date=2020-04-04&ampsingle=true </a></div>	
                     
