@@ -2,6 +2,10 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Covid 19 API Italia">
+  <meta property="og:description" content="API in formato JSON con i dati forniti dalla Protezione Civile relativi sul contagio da COVID-19 nelle regioni e province Italiane.">
+  <meta property="og:image" content="http://www.covid19api.it/img/share.png">
+  <meta property="og:url" content="http://www.covid19api.it/grafici">
   <link rel="shortcut icon" href="../img/icona.ico" />
   <title>API COVID-19</title>
   <link rel="stylesheet" href="/charts/node_modules/bootstrap/dist/css/bootstrap.min.css">
