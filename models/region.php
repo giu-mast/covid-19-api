@@ -78,8 +78,7 @@ class Region{
                 }
             }
         }
-        // return date("Y-m-d", $max_date);
-        return date("Y-m-d");
+        return date("Y-m-d", $max_date);
    }
     
    public function filtered_get_regions($start_date=false, $single=false, $end_date=false, $region_code=false, $region_name=false){

@@ -8,6 +8,7 @@
   <meta property="og:url" content="http://www.covid19api.it/grafici">
   <link rel="shortcut icon" href="../img/icona.ico" />
   <title>API COVID-19</title>
+  <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
   <link rel="stylesheet" href="/charts/node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/charts/node_modules/choices.js/public/assets/styles/choices.min.css" />
 
@@ -15,7 +16,7 @@
   <style type="text/css">
     .chart{
       background: #eee;
-      min-height: 400px; 
+      min-height: 500px; 
     }
     .form-row.my-2.divs.regions{
       display:block;   
@@ -26,15 +27,22 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 offset-md-2">
-        <h1>Grafici interattivi</h1>
+  <?php require($_SERVER["DOCUMENT_ROOT"].'/header.php'); ?>
+  
+  <div class="container-fluid" id="ContainerTitle">
+    <div class="container-fluid" id="ContainerTitle_Center">
+      <div class="row-1">
+          <div class="col-sm-7" id="ContainerTitle_Titolo">
+            <h1>Grafici Interattivi</h1>
+          </div>
+          <div class="col-sm-9" id="ContainerTitle_Sottotitolo">In questa pagina sarà possibile visualizzare dei grafici interattivi realizzati con le API fornite. Questo &egrave; solo un esempio dei grafici che è possibile visualizzare utilizzando i dati forniti.</div>
+        </div>
       </div>
-    </div>
+  </div>
 
+  <div class="container pt-5">
     <div class="row">
-      <div class="col-md-8 offset-md-2 my-5">
+      <div class="col-md-8 my-5">
         <h2>Istogramma</h2>
         <?php require('filters.php'); ?>
       </div>
@@ -49,7 +57,7 @@
 
 
     <div class="row">
-      <div class="col-md-8 offset-md-2 my-5">
+      <div class="col-md-8 my-5">
         <h2>Grafico a torta</h2>
         <?php require('filters_pie.php'); ?>
       </div>
@@ -64,14 +72,13 @@
     
     <div class="row">
       <div class="col-12">
+        <h2>Grafico radar</h2>
         <div id="radarchart" class="chart">
         </div>
       </div>
     </div>
-
-
   </div>
-
+  <?php require($_SERVER["DOCUMENT_ROOT"].'/footer.php'); ?>
   <!-- LIBS AND POLYFILL -->
   <script src="/charts/node_modules/date-input-polyfill/date-input-polyfill.dist.js"></script>
   <script src="/charts/node_modules/choices.js/public/assets/scripts/choices.min.js"></script>
@@ -84,8 +91,7 @@
   <script src="//www.amcharts.com/lib/4/lang/it_IT.js"></script>
 
   <!-- TEMP COMMON OPS (init widgets, load test json, etc) -->
-  
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
   <script type="text/javascript">
     $(function() {
         $('.js-api').each(function(i,v){
@@ -163,8 +169,6 @@
               case 'hospitalized_with_symptoms':
               case 'home_isolation':
               case 'total_positives':
-              case 'total_variation_positives':
-              case 'new_positives':
               case 'released_cured':
               case 'swabs':
               case 'testes_cases':
@@ -189,6 +193,9 @@
             break;
             case 'total_deaths':
             case 'total_cases':
+            case 'total_variation_positives':
+            case 'new_positives':
+              
               console.log(`LineSeries in ${translations[region]} for metric -> ${metric}`)
               var lineSeries = xyChart.series.push( new am4charts.LineSeries() );
               lineSeries.tooltipText = `${metricsTranslations[metric]} in ${translations[region]} il {dateX}: {valueY}`;
@@ -221,6 +228,13 @@
 
       xyChart.legend = new am4charts.Legend();
       xyChart.exporting.menu = new am4core.ExportMenu();
+        
+      xyChart.cursor = new am4charts.XYCursor();
+        
+      xyChart.zoomOutButton.align = "left";
+      xyChart.zoomOutButton.valign = "bottom";
+      xyChart.zoomOutButton.marginLeft = 10;
+      xyChart.zoomOutButton.marginBottom = 10;
     }
 
 
@@ -293,5 +307,7 @@
       
   </script>
   <script type="text/javascript" src="../js/charts_common.js"></script>
+
+  
 </body>
 </html>

@@ -1,5 +1,4 @@
 <?php
-
     if (!defined('E_LOG_PATH')) define("E_LOG_PATH",$_SERVER["DOCUMENT_ROOT"]."/log_errors.txt");;
     header("Access-Control-Allow-Origin: *");
     header("Content-type: application/json; charset=utf-8");
