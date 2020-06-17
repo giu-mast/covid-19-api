@@ -3,7 +3,10 @@
 <head> 
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+	<meta property="og:title" content="Covid 19 API Italia">
+	<meta property="og:description" content="API in formato JSON con i dati forniti dalla Protezione Civile relativi sul contagio da COVID-19 nelle regioni e province Italiane.">
+	<meta property="og:image" content="http://www.covid19api.it/img/share.png">
+	<meta property="og:url" content="http://www.covid19api.it/">
 		<link rel="stylesheet" href="css/bootsrap-css/bootstrap.min.css">
 		<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 
