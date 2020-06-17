@@ -4,9 +4,9 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta property="og:title" content="Covid 19 API Italia">
-	<meta property="og:description" content="API in formato JSON con i dati forniti dalla Protezione Civile relativi sul contagio da COVID-19 nelle regioni e province Italiane.">
+	<meta property="og:description" content="API in formato JSON con i dati forniti dalla Protezione Civile relativi al contagio da COVID-19 nelle regioni e province Italiane.">
 	<meta property="og:image" content="http://www.covid19api.it/img/share.png">
-	<meta property="og:image:type" content="image/jpeg" />
+	<meta property="og:image:type" content="image/png" />
 	<meta property="og:image:width" content="1114" />
 	<meta property="og:image:height" content="509" />
 	<meta property="og:url" content="http://www.covid19api.it/">
