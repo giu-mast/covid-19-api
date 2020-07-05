@@ -101,7 +101,7 @@
         echo $obj_region->get_error_json(array("Status Code"=>"500","Server Error:"=>"{$e}"));
         $current_date = new DateTime();
         $fileError = fopen(E_LOG_PATH,"a");
-        fwrite($fileError,"[endpoint->regions] [date->".$current_date->format('Y-m-d H:i:s')."] [Server_Error->{$e}] [Status_Code->500]");
+        fwrite($fileError,"\n\n[endpoint->regions] [date->".$current_date->format('Y-m-d H:i:s')."] [Server_Error->{$e}] [Status_Code->500]\n\n");
         fclose($fileError);
     }
 
