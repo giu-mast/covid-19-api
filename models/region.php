@@ -24,7 +24,7 @@ class Region{
             $current_date = new DateTime();
             $this->jsonadapter = new JSONAdapter(array("Error_message"=>$e->getMessage()));
             $fileError = fopen(E_LOG_PATH,"a");
-            fwrite($fileError,"[models -> regions] [date->".$current_date->format('Y-m-d H:i:s')."] [client_IP->".getUserIpAddr()."]" . $e->getMessage());
+            fwrite($fileError,"\n\n[models -> regions] [date->".$current_date->format('Y-m-d H:i:s')."] [client_IP->".getUserIpAddr()."]" . $e->getMessage());
             fclose($fileError);
             throw $e;
         }
