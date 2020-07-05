@@ -1,6 +1,6 @@
 <?php
 
-define("COLUMNS",array("date","nation","region_code","region_name","latitude","longitude","hospitalized_with_symptoms","intensive_care","total_hospitalized","home_isolation","total_positives","total_variation_positives","new_positives","released_cured","total_deaths","total_cases","swabs","testes_cases"));
+define("COLUMNS",array("date","nation","region_code","region_name","latitude","longitude","hospitalized_with_symptoms","intensive_care","total_hospitalized","home_isolation","total_positives","total_variation_positives","new_positives","released_cured","total_deaths","total_cases","swabs","testes_cases", "screening_cases", "diagnostic_suspect_cases"));
 define("PATH_CSV",$_SERVER['DOCUMENT_ROOT']."/COVID-19/dati-regioni/dpc-covid19-ita-regioni.csv");
 if (!defined('E_LOG_PATH')) define("E_LOG_PATH",$_SERVER["DOCUMENT_ROOT"]."/log_errors.txt");;
 
