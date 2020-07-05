@@ -17,7 +17,7 @@ class Region{
              $this->csvreader = new CSVReader(PATH_CSV);
              if(!$this->csvreader->columns_replace(COLUMNS)){
                 $columns = var_export(COLUMNS, true);
-                $headers = var_export(this->csvreader->headers, true);
+                $headers = var_export($this->csvreader->headers, true);
 
                 throw new Exception("Columns Error: -> unable to replace key fields.\n" . $headers . "\n" . $columns . "\n");
              }
