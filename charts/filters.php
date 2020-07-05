@@ -27,7 +27,7 @@
             id="start_date" 
             name="start_date"
             value="2020-02-24"
-            min="2020-02-24" max="2020-06-30">
+            min="2020-02-24" max="2020-07-30">
       </div>
     </div>
   </div>
@@ -44,7 +44,7 @@
             type="date" 
             id="end_date" 
             name="end_date"
-            min="2020-02-24" max="2020-06-30">
+            min="2020-02-24" max="2020-07-30">
       </div>
     </div>
   </div>
