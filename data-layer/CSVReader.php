@@ -2,8 +2,8 @@
 class CSVReader{
     
     public $filecsv;  
-    private $results;   
-    private $headers;   
+    public $results;   
+    public $headers;   
     
     public function __construct($filepath, $delimeter_c=",", $delimeter_r="\n", $enclosure='"', $escape="\\"){  
         if(!file_exists($filepath)){
